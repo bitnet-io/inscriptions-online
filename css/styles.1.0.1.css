@@ -138,7 +138,7 @@ input {
     cursor: pointer;
 }
 
-.dns_form, .dns_checker, .timer, .brc20_deploy_form, .brc20_mint_form, .brc20_transfer_form, .text_form, .text_form, .unisat_form, .unisat_checker {
+.dns_form, .dns_checker, .timer, .bit20_deploy_form, .bit20_mint_form, .bit20_transfer_form, .text_form, .text_form, .unisat_form, .unisat_checker {
     display: none;
 }
 

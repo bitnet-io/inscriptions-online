@@ -22,9 +22,11 @@
         <li id="logo"><a href="index.html">looks◉rdinal &gt;&gt;</a></li>
         <li class="active">inscribe</li>
         <li>|</li>
-        <li><a href="bridge.html">brc20 trading</a></li>
+        <li><a href="bridge.html">bit20 trading</a></li>
         <li>|</li>
-        <li><a href="universe.html">$univ</a></li>
+<!--        <li><a href="universe.html">$univ</a></li>-->
+        <li><a href="https://bitnet-io.org">back to bitnet-io.org</a></li>
+
     </ul>
 </nav>
 
@@ -34,7 +36,7 @@
     <h6 style="margin-top: -15px;">
         Self-custodial bulk inscriptions. The most powerful and cost-effective way to inscribe Ordinals on Bitcoin.
         Join
-        our <a href="https://discord.gg/Ur8XGaurSd" target="_blank">Discord</a>. Make sure to <a href="https://medium.com/@rarity.garden/inscriptions-with-looksordinal-cfa2d635f720" target="_blank">read the guide</a>.
+        our <a href="https://discord.gg/PUt9ezaAvy" target="_blank">Discord</a>. Make sure to <a href="https://medium.com/@rarity.garden/inscriptions-with-looksordinal-cfa2d635f720" target="_blank">read the guide</a>.
     </h6>
     <h2 class="safari_warning">This tool may not work in safari browser. If you are using that, consider switching.</h2>
     <div id="setup">
@@ -58,28 +60,28 @@
                     <a id="text_nav" class="text" href="javascript:void(0);">text</a>
                 </li>
                 <li>
-                    <a id="registration_nav" class="registration" href="javascript:void(0);">.sats domains</a>
+                    <a id="registration_nav" class="registration" href="javascript:void(0);">.radiowaves domains</a>
                 </li>
                 <li>
                     <a id="unisat_nav" class="unisat" href="javascript:void(0);">.unisat domains</a>
                 </li>
                 <li>
-                    <a id="brc20_mint_nav" class="brc20_mint" href="javascript:void(0);">brc-20 mint</a>
+                    <a id="bit20_mint_nav" class="bit20_mint" href="javascript:void(0);">bit-20 mint</a>
                 </li>
                 <li class="nav-item">
-                    <a id="brc20_deploy_nav" class="brc20_deploy" href="javascript:void(0);">brc-20 deploy</a>
+                    <a id="bit20_deploy_nav" class="bit20_deploy" href="javascript:void(0);">bit-20 deploy</a>
                 </li>
                 <li class="nav-item">
-                    <a id="brc20_transfer_nav" class="brc20_transfer" href="javascript:void(0);">brc-20 transfer</a>
+                    <a id="bit20_transfer_nav" class="bit20_transfer" href="javascript:void(0);">bit-20 transfer</a>
                 </li>
             </ul>
         </div>
-
+<!--
         <div class="options" style="display: none;" id="plugin-list">
             <div>Special</div>
-            <div style="font-size: 14px; color: gray;"><a style="font-size: 14px; color: gray;"href="https://discord.gg/Ur8XGaurSd" target="_blank">Contact us</a> to list your project here</div>
+            <div style="font-size: 14px; color: gray;"><a style="font-size: 14px; color: gray;"href="https://discord.gg/PUt9ezaAvy" target="_blank">Contact us</a> to list your project here</div>
             <ul style="vertical-align: top;"></ul>
-        </div>
+        </div>-->
 
         <form id="app-form">
 
@@ -138,9 +140,9 @@
             </div>
 
             <div class="dns_form option_form">
-                <p>tip: use the .sats domain feature in the Special section above to host your content</p>
+                <p>tip: use the .radiowaves domain feature in the Special section above to host your content</p>
             <textarea class="dns" style="width: 100%; height: 250px;"
-                      placeholder="One domain per line. Example:&#10;&#10;ordi.sats&#10;btc.sats"></textarea>
+                      placeholder="One domain per line. Example:&#10;&#10;ordi.radiowaves&#10;btc.radiowaves"></textarea>
                 <button class="dns_checker btn btn-outline-primary mt-3 mb-3" type="button">Check availability</button>
             </div>
 
@@ -150,48 +152,48 @@
                 <button class="unisat_checker btn btn-outline-primary mt-3 mb-3" type="button">Check availability</button>
             </div>
 
-            <div class="brc20_mint_form option_form">
+            <div class="bit20_mint_form option_form">
 
                 <div class="mb-3">
-                    <label for="brc20-mint-ticker">Ticker</label>
-                    <input id="brc20-mint-ticker" type="text" maxlength="4" value=""
+                    <label for="bit20-mint-ticker">Ticker</label>
+                    <input id="bit20-mint-ticker" type="text" maxlength="4" value=""
                            placeholder="e.g. ordi"/>
                 </div>
 
                 <div class="mb-3">
-                    <label for="brc20-mint-amount">Amount</label>
-                    <input id="brc20-mint-amount" type="text" value="" placeholder="e.g. 1000"/>
+                    <label for="bit20-mint-amount">Amount</label>
+                    <input id="bit20-mint-amount" type="text" value="" placeholder="e.g. 1000"/>
                 </div>
 
                 <div class="mb-3">
-                    <label for="brc20-mint-repeat">Repeat</label>
-                    <input id="brc20-mint-repeat" type="text" value="1"
+                    <label for="bit20-mint-repeat">Repeat</label>
+                    <input id="bit20-mint-repeat" type="text" value="1"
                            placeholder="e.g. 10 to mint ten times"/>
                 </div>
 
             </div>
 
-            <div class="brc20_deploy_form option_form">
+            <div class="bit20_deploy_form option_form">
 
                 <div class="mb-3">
-                    <label for="brc20-deploy-ticker">Ticker</label>
-                    <input id="brc20-deploy-ticker" type="text" maxlength="4" value=""
+                    <label for="bit20-deploy-ticker">Ticker</label>
+                    <input id="bit20-deploy-ticker" type="text" maxlength="4" value=""
                            placeholder="e.g. ordi"/>
                 </div>
 
                 <div class="mb-3">
-                    <label for="brc20-deploy-max">Supply</label>
-                    <input id="brc20-deploy-max" type="text" value="" placeholder="e.g. 21000000"/>
+                    <label for="bit20-deploy-max">Supply</label>
+                    <input id="bit20-deploy-max" type="text" value="" placeholder="e.g. 21000000"/>
                 </div>
 
                 <div class="mb-3">
-                    <label for="brc20-deploy-lim">Limit per mint</label>
-                    <input id="brc20-deploy-lim" type="text" value="" placeholder="e.g. 1000"/>
+                    <label for="bit20-deploy-lim">Limit per mint</label>
+                    <input id="bit20-deploy-lim" type="text" value="" placeholder="e.g. 1000"/>
                 </div>
 
             </div>
 
-            <div class="brc20_transfer_form option_form">
+            <div class="bit20_transfer_form option_form">
 
                 <hr/>
 
@@ -208,7 +210,7 @@
 
                 <p>
                     2. You can check your transferable balance using <a id="transfer-balance-link"
-                                                                        href="https://unisat.io/brc20?q="
+                                                                        href="https://unisat.io/bit20?q="
                                                                         target="_blank">this
                     link</a>.
                 </p>
@@ -236,13 +238,13 @@
 
                         <div class="mb-3">
                             <label>Ticker</label>
-                            <input class="brc20-transfer-ticker" type="text" maxlength="4" value=""
+                            <input class="bit20-transfer-ticker" type="text" maxlength="4" value=""
                                    placeholder="e.g. ordi"/>
                         </div>
 
                         <div class="mb-3">
                             <label>Amount</label>
-                            <input class="brc20-transfer-amount" type="text" value="" placeholder="e.g. 21000000"/>
+                            <input class="bit20-transfer-amount" type="text" value="" placeholder="e.g. 21000000"/>
                         </div>
 
                     </div>
@@ -257,7 +259,7 @@
 
             <span class="timer">61</span>
 
-            <p>&gt;&gt; Select a feerate (sats/vB)</p>
+            <p>&gt;&gt; Select a feerate (radiowaves/vB)</p>
             <div class="feerates">
                 <div class="fee minfee">
                     <div style="color: white;" class="num rounded">...</div>
@@ -273,8 +275,8 @@
                 </div>
             </div>
             <div style="margin-top: 15px;" id="sliderange">
-                <label for="sats_range">sats/vB: <span id="sats_per_byte">1</span></label>
-                <input class="form-range" id="sats_range" type="range" min="1" max="500" value="1">
+                <label for="radiowaves_range">radiowaves/vB: <span id="radiowaves_per_byte">1</span></label>
+                <input class="form-range" id="radiowaves_range" type="range" min="1" max="500" value="1">
             </div>
         </form>
 
@@ -305,9 +307,9 @@
         </div>
 
         <div id="tipping" style="display: inline-block;">
-            <label for="tip" style="display: inline-block;margin-bottom: 0"><span style="margin-right: 6px;">💖</span>
+         <label for="tip" style="display: inline-block;margin-bottom: 0"><span style="margin-right: 6px;">💖</span>
                 Developer Tip</label>
-            <input id="tip" style="width: 100px; margin-bottom:0;" type="text" value="0"/> sats ($<span
+            <input id="tip" style="width: 100px; margin-bottom:0;" type="text" value="0"/> radiowaves ($<span
                 id="tip-usd">0</span>)
         </div>
 
@@ -344,6 +346,9 @@
     </div>
     <div style="text-align: center;font-size: 14px;">
         Features and experiences between forks might differ.
+    </div>
+    <div style="text-align: center;font-size: 14px;">
+        this fork was created by dhweinberg for the bitnet-io design
     </div>
 
 </div>

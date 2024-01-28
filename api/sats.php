@@ -7,7 +7,7 @@ if(!isset($_GET['q']))
     exit;
 }
 
-$url = "https://unisat.io/_next/data/FJqw_KN_hpI4xI4tITJV9/search.json?q=".$_GET['q']."&type=sats&p=1";
+$url = "https://unisat.io/_next/data/FJqw_KN_hpI4xI4tITJV9/search.json?q=".$_GET['q']."&type=radiowaves&p=1";
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);

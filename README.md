@@ -1,4 +1,4 @@
-# looks◉rdinal for bitnet-io
+# looks◉rdinal
 
 A self-custodial inscription tool.
 

@@ -17,8 +17,8 @@ let files = [];
 
 sessionStorage.clear();
 
-let slider = document.getElementById("sats_range");
-let output = document.getElementById("sats_per_byte");
+let slider = document.getElementById("radiowaves_range");
+let output = document.getElementById("radiowaves_per_byte");
 output.innerHTML = slider.value;
 slider.oninput = function () {
     output.innerHTML = this.value;
@@ -35,9 +35,9 @@ window.onload = async function () {
     $('.upload_file').onclick = showUploader;
     $('.registration').onclick = showRegister;
     $('.unisat').onclick = showUnisat;
-    $('.brc20_mint').onclick = showBrc20Mint;
-    $('.brc20_deploy').onclick = showBrc20Deploy;
-    $('.brc20_transfer').onclick = showBrc20Transfer;
+    $('.bit20_mint').onclick = showBrc20Mint;
+    $('.bit20_deploy').onclick = showBrc20Deploy;
+    $('.bit20_transfer').onclick = showBrc20Transfer;
     $('#backup-usage').onclick = showBackupUsage;
     $('#tip').onfocus = async function(){
 
@@ -52,7 +52,7 @@ window.onload = async function () {
             $('#tip').value = '';
         }
 
-        $('#tip-usd').innerHTML = Number(await satsToDollars(tip)).toFixed(2);
+        $('#tip-usd').innerHTML = Number(await radiowavesToDollars(tip)).toFixed(2);
     };
 
     await initDatabase();
@@ -158,7 +158,7 @@ async function startInscriptionRecovery(key) {
             continue;
         }
 
-        let response = await getData('https://mempool.space/'+mempoolNetwork+'api/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
+        let response = await getData('https://bitexplorer.io/'+mempoolNetwork+'api/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
         let utxos = JSON.parse(response);
         let utxo = null;
 
@@ -169,7 +169,7 @@ async function startInscriptionRecovery(key) {
             if (utxo !== null) {
                 utxos_found = true;
                 $('#recovery-info').style.display = 'none';
-                $('#backup-recovery').innerHTML += '<div id="recovery-item-' + key + '-'+utxo.vout+'" style="font-size: 14px;">Found UTXO with ' + utxo.value + ' sats [<a style="font-size: 14px;" href="javascript:void(0);" onclick="recover(' + i + ', ' + utxo.vout + ', $(\'#taproot_address\').value, \'' + key + '\')">recover</a>]</div>';
+                $('#backup-recovery').innerHTML += '<div id="recovery-item-' + key + '-'+utxo.vout+'" style="font-size: 14px;">Found UTXO with ' + utxo.value + ' radiowaves [<a style="font-size: 14px;" href="javascript:void(0);" onclick="recover(' + i + ', ' + utxo.vout + ', $(\'#taproot_address\').value, \'' + key + '\')">recover</a>]</div>';
                 $('#backup-recovery').innerHTML += '<hr/>';
 
                 console.log(utxo);
@@ -193,9 +193,9 @@ function showUnisat() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.brc20_deploy_form').style.display = "none";
-    $('.brc20_mint_form').style.display = "none";
-    $('.brc20_transfer_form').style.display = "none";
+    $('.bit20_deploy_form').style.display = "none";
+    $('.bit20_mint_form').style.display = "none";
+    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -208,9 +208,9 @@ function showUnisat() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('brc20_mint_nav').classList.remove('active');
-    document.getElementById('brc20_deploy_nav').classList.remove('active');
-    document.getElementById('brc20_transfer_nav').classList.remove('active');
+    document.getElementById('bit20_mint_nav').classList.remove('active');
+    document.getElementById('bit20_deploy_nav').classList.remove('active');
+    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.add('active');
@@ -231,9 +231,9 @@ function showText() {
 
     $('#app-form').reset();
     $('.text_form').style.display = "inline";
-    $('.brc20_deploy_form').style.display = "none";
-    $('.brc20_mint_form').style.display = "none";
-    $('.brc20_transfer_form').style.display = "none";
+    $('.bit20_deploy_form').style.display = "none";
+    $('.bit20_mint_form').style.display = "none";
+    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -246,9 +246,9 @@ function showText() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('brc20_mint_nav').classList.remove('active');
-    document.getElementById('brc20_deploy_nav').classList.remove('active');
-    document.getElementById('brc20_transfer_nav').classList.remove('active');
+    document.getElementById('bit20_mint_nav').classList.remove('active');
+    document.getElementById('bit20_deploy_nav').classList.remove('active');
+    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -261,9 +261,9 @@ function showRegister() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.brc20_deploy_form').style.display = "none";
-    $('.brc20_mint_form').style.display = "none";
-    $('.brc20_transfer_form').style.display = "none";
+    $('.bit20_deploy_form').style.display = "none";
+    $('.bit20_mint_form').style.display = "none";
+    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "block";
     $('.dns_checker').style.display = "inline";
@@ -276,9 +276,9 @@ function showRegister() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('brc20_mint_nav').classList.remove('active');
-    document.getElementById('brc20_deploy_nav').classList.remove('active');
-    document.getElementById('brc20_transfer_nav').classList.remove('active');
+    document.getElementById('bit20_mint_nav').classList.remove('active');
+    document.getElementById('bit20_deploy_nav').classList.remove('active');
+    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.add('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -291,9 +291,9 @@ function showUploader() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.brc20_deploy_form').style.display = "none";
-    $('.brc20_mint_form').style.display = "none";
-    $('.brc20_transfer_form').style.display = "none";
+    $('.bit20_deploy_form').style.display = "none";
+    $('.bit20_mint_form').style.display = "none";
+    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "block";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -305,9 +305,9 @@ function showUploader() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('brc20_mint_nav').classList.remove('active');
-    document.getElementById('brc20_deploy_nav').classList.remove('active');
-    document.getElementById('brc20_transfer_nav').classList.remove('active');
+    document.getElementById('bit20_mint_nav').classList.remove('active');
+    document.getElementById('bit20_deploy_nav').classList.remove('active');
+    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.add('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -320,9 +320,9 @@ function showBrc20Deploy() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.brc20_deploy_form').style.display = "block";
-    $('.brc20_mint_form').style.display = "none";
-    $('.brc20_transfer_form').style.display = "none";
+    $('.bit20_deploy_form').style.display = "block";
+    $('.bit20_mint_form').style.display = "none";
+    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -335,9 +335,9 @@ function showBrc20Deploy() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('brc20_mint_nav').classList.remove('active');
-    document.getElementById('brc20_deploy_nav').classList.add('active');
-    document.getElementById('brc20_transfer_nav').classList.remove('active');
+    document.getElementById('bit20_mint_nav').classList.remove('active');
+    document.getElementById('bit20_deploy_nav').classList.add('active');
+    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -350,9 +350,9 @@ function showBrc20Mint() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.brc20_deploy_form').style.display = "none";
-    $('.brc20_mint_form').style.display = "block";
-    $('.brc20_transfer_form').style.display = "none";
+    $('.bit20_deploy_form').style.display = "none";
+    $('.bit20_mint_form').style.display = "block";
+    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -365,9 +365,9 @@ function showBrc20Mint() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('brc20_mint_nav').classList.add('active');
-    document.getElementById('brc20_deploy_nav').classList.remove('active');
-    document.getElementById('brc20_transfer_nav').classList.remove('active');
+    document.getElementById('bit20_mint_nav').classList.add('active');
+    document.getElementById('bit20_deploy_nav').classList.remove('active');
+    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -380,9 +380,9 @@ function showBrc20Transfer() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.brc20_deploy_form').style.display = "none";
-    $('.brc20_mint_form').style.display = "none";
-    $('.brc20_transfer_form').style.display = "block";
+    $('.bit20_deploy_form').style.display = "none";
+    $('.bit20_mint_form').style.display = "none";
+    $('.bit20_transfer_form').style.display = "block";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -395,9 +395,9 @@ function showBrc20Transfer() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('brc20_mint_nav').classList.remove('active');
-    document.getElementById('brc20_deploy_nav').classList.remove('active');
-    document.getElementById('brc20_transfer_nav').classList.add('active');
+    document.getElementById('bit20_mint_nav').classList.remove('active');
+    document.getElementById('bit20_deploy_nav').classList.remove('active');
+    document.getElementById('bit20_transfer_nav').classList.add('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -493,41 +493,41 @@ async function run(estimate) {
     let mempool_success = await probeAddress($('.address').value, true);
 
     if (!estimate && !mempool_success) {
-        alert('Could not establish a connection to Mempool.space. Most likely you got rate limited. Please wait a few minutes before you try inscribing.');
+        alert('Could not establish a connection to bitexplorer.io. Most likely you got rate limited. Please wait a few minutes before you try inscribing.');
         return;
     }
 
-    if ($('.brc20_deploy_form').style.display != "none") {
+    if ($('.bit20_deploy_form').style.display != "none") {
 
         files = [];
 
         let deploy = '{ \n' +
-            '  "p": "brc-20",\n' +
+            '  "p": "bit-20",\n' +
             '  "op": "deploy",\n' +
             '  "tick": "",\n' +
             '  "max": "",\n' +
             '  "lim": ""\n' +
             '}';
 
-        if (isNaN(parseInt($('#brc20-deploy-max').value))) {
+        if (isNaN(parseInt($('#bit20-deploy-max').value))) {
             alert('Invalid supply.');
             return;
         }
 
-        if (isNaN(parseInt($('#brc20-deploy-lim').value))) {
+        if (isNaN(parseInt($('#bit20-deploy-lim').value))) {
             alert('Invalid limit.');
             return;
         }
 
-        if ($('#brc20-deploy-ticker').value == '' || $('#brc20-deploy-ticker').value.length < 2) {
+        if ($('#bit20-deploy-ticker').value == '' || $('#bit20-deploy-ticker').value.length < 2) {
             alert('Invalid ticker length. Must be at least 2 characters.');
             return;
         }
 
         deploy = JSON.parse(deploy);
-        deploy.tick = $('#brc20-deploy-ticker').value;
-        deploy.max = $('#brc20-deploy-max').value;
-        deploy.lim = $('#brc20-deploy-lim').value;
+        deploy.tick = $('#bit20-deploy-ticker').value;
+        deploy.max = $('#bit20-deploy-max').value;
+        deploy.lim = $('#bit20-deploy-lim').value;
 
         let mimetype = "text/plain;charset=utf-8";
         files.push({text: JSON.stringify(deploy), name: deploy.tick, hex: textToHex(JSON.stringify(deploy)), mimetype: mimetype, sha256: ''});
@@ -535,19 +535,19 @@ async function run(estimate) {
         console.log(files);
     }
 
-    if ($('.brc20_transfer_form').style.display != "none") {
+    if ($('.bit20_transfer_form').style.display != "none") {
 
         files = [];
 
         let _transfer = '{ \n' +
-            '  "p": "brc-20",\n' +
+            '  "p": "bit-20",\n' +
             '  "op": "transfer",\n' +
             '  "tick": "",\n' +
             '  "amt": ""\n' +
             '}';
 
-        let transfers = $$('.brc20-transfer-amount');
-        let tickers = $$('.brc20-transfer-ticker');
+        let transfers = $$('.bit20-transfer-amount');
+        let tickers = $$('.bit20-transfer-ticker');
 
         for(let i = 0; i < transfers.length; i++)
         {
@@ -573,32 +573,32 @@ async function run(estimate) {
         console.log(files);
     }
 
-    if ($('.brc20_mint_form').style.display != "none") {
+    if ($('.bit20_mint_form').style.display != "none") {
 
         files = [];
 
         let mint = '{ \n' +
-            '  "p": "brc-20",\n' +
+            '  "p": "bit-20",\n' +
             '  "op": "mint",\n' +
             '  "tick": "",\n' +
             '  "amt": ""\n' +
             '}';
 
-        if (isNaN(parseInt($('#brc20-mint-amount').value))) {
+        if (isNaN(parseInt($('#bit20-mint-amount').value))) {
             alert('Invalid mint amount.');
             return;
         }
 
-        if ($('#brc20-mint-ticker').value == '' || $('#brc20-mint-ticker').value.length < 2) {
+        if ($('#bit20-mint-ticker').value == '' || $('#bit20-mint-ticker').value.length < 2) {
             alert('Invalid ticker length. Must be at least 2 characters.');
             return;
         }
 
         mint = JSON.parse(mint);
-        mint.tick = $('#brc20-mint-ticker').value;
-        mint.amt = $('#brc20-mint-amount').value;
+        mint.tick = $('#bit20-mint-ticker').value;
+        mint.amt = $('#bit20-mint-amount').value;
 
-        let repeat = parseInt($('#brc20-mint-repeat').value);
+        let repeat = parseInt($('#bit20-mint-repeat').value);
 
         if (isNaN(repeat)) {
             alert('Invalid repeat amount.');
@@ -623,14 +623,14 @@ async function run(estimate) {
 
         files = [];
 
-        let sats_domains = $('.unisat_text').value.split("\n");
-        let sats_domains_cleaned = [];
+        let radiowaves_domains = $('.unisat_text').value.split("\n");
+        let radiowaves_domains_cleaned = [];
 
-        for (let sats_domain in sats_domains) {
+        for (let radiowaves_domain in radiowaves_domains) {
 
-            let domain = sats_domains[sats_domain].trim();
+            let domain = radiowaves_domains[radiowaves_domain].trim();
 
-            if (domain == '' || sats_domains_cleaned.includes(domain)) {
+            if (domain == '' || radiowaves_domains_cleaned.includes(domain)) {
 
                 continue;
             }
@@ -643,16 +643,16 @@ async function run(estimate) {
                 return;
             }
 
-            sats_domains_cleaned.push(domain);
+            radiowaves_domains_cleaned.push(domain);
         }
 
-        for (let sats_domain in sats_domains_cleaned) {
+        for (let radiowaves_domain in radiowaves_domains_cleaned) {
 
             let mimetype = "text/plain;charset=utf-8";
-            let domain = {"p": "sns", "op": "reg", "name": sats_domains_cleaned[sats_domain].trim()};
+            let domain = {"p": "sns", "op": "reg", "name": radiowaves_domains_cleaned[radiowaves_domain].trim()};
             files.push({
                 text: JSON.stringify(domain),
-                name: sats_domains_cleaned[sats_domain].trim(),
+                name: radiowaves_domains_cleaned[radiowaves_domain].trim(),
                 hex: textToHex(JSON.stringify(domain)),
                 mimetype: mimetype,
                 sha256: ''
@@ -665,36 +665,36 @@ async function run(estimate) {
 
         files = [];
 
-        let sats_domains = $('.dns').value.split("\n");
-        let sats_domains_cleaned = [];
+        let radiowaves_domains = $('.dns').value.split("\n");
+        let radiowaves_domains_cleaned = [];
 
-        for (let sats_domain in sats_domains) {
+        for (let radiowaves_domain in radiowaves_domains) {
 
-            let domain = sats_domains[sats_domain].trim();
+            let domain = radiowaves_domains[radiowaves_domain].trim();
 
-            if (domain == '' || sats_domains_cleaned.includes(domain)) {
+            if (domain == '' || radiowaves_domains_cleaned.includes(domain)) {
 
                 continue;
             }
 
             let splitted = domain.split('.');
 
-            if(splitted.length == 1 || splitted[splitted.length - 1].toLowerCase() != 'sats')
+            if(splitted.length == 1 || splitted[splitted.length - 1].toLowerCase() != 'radiowaves')
             {
-                alert('Invalid sats domain: ' + domain);
+                alert('Invalid radiowaves domain: ' + domain);
                 return;
             }
 
-            sats_domains_cleaned.push(domain);
+            radiowaves_domains_cleaned.push(domain);
         }
 
-        for (let sats_domain in sats_domains_cleaned) {
+        for (let radiowaves_domain in radiowaves_domains_cleaned) {
 
             let mimetype = "text/plain;charset=utf-8";
-            let domain = {"p": "sns", "op": "reg", "name": sats_domains_cleaned[sats_domain].trim()};
+            let domain = {"p": "sns", "op": "reg", "name": radiowaves_domains_cleaned[radiowaves_domain].trim()};
             files.push({
                 text: JSON.stringify(domain),
-                name: sats_domains_cleaned[sats_domain].trim(),
+                name: radiowaves_domains_cleaned[radiowaves_domain].trim(),
                 hex: textToHex(JSON.stringify(domain)),
                 mimetype: mimetype,
                 sha256: ''
@@ -796,7 +796,7 @@ async function run(estimate) {
     if (!isNaN(_padding) && _padding <= Number.MAX_SAFE_INTEGER && _padding >= min_padding) {
         padding = _padding;
     } else {
-        alert('Invalid padding. Please enter at minimum ' + min_padding + ' sats amount for each inscription.');
+        alert('Invalid padding. Please enter at minimum ' + min_padding + ' radiowaves amount for each inscription.');
         return;
     }
 
@@ -806,7 +806,7 @@ async function run(estimate) {
     /*
     if(!estimate && parseInt(tip_check) > 0 && tip_check < 500)
     {
-        alert('Minimum tipping is 500 sats due to technical reasons. Thank you anyway!');
+        alert('Minimum tipping is 500 radiowaves due to technical reasons. Thank you anyway!');
         return;
     }*/
 
@@ -817,8 +817,8 @@ async function run(estimate) {
             if(!estimate && tip_check < 500 * files.length)
             {
                 $('#tip').value = 500 * files.length;
-                $('#tip-usd').innerHTML = Number(await satsToDollars($('#tip').value)).toFixed(2);
-                alert('Minimum tipping is ' + (500 * files.length) + ' sats based on your bulk amount. A suggestion has been added to the tip.');
+                $('#tip-usd').innerHTML = Number(await radiowavesToDollars($('#tip').value)).toFixed(2);
+                alert('Minimum tipping is ' + (500 * files.length) + ' radiowaves based on your bulk amount. A suggestion has been added to the tip.');
                 return;
             }
         }
@@ -828,8 +828,8 @@ async function run(estimate) {
             if(!estimate && 100 * files.length >= 500 && tip_check < 100 * files.length)
             {
                 $('#tip').value = 100 * files.length;
-                $('#tip-usd').innerHTML = Number(await satsToDollars($('#tip').value)).toFixed(2);
-                alert('Minimum tipping is ' + (100 * files.length) + ' sats based on your bulk amount. A suggestion has been added to the tip.');
+                $('#tip-usd').innerHTML = Number(await radiowavesToDollars($('#tip').value)).toFixed(2);
+                alert('Minimum tipping is ' + (100 * files.length) + ' radiowaves based on your bulk amount. A suggestion has been added to the tip.');
                 return;
             }
         }
@@ -841,8 +841,8 @@ async function run(estimate) {
         if(!estimate && tip_check < plugin_tip)
         {
             $('#tip').value = plugin_tip;
-            $('#tip-usd').innerHTML = Number(await satsToDollars($('#tip').value)).toFixed(2);
-            alert('Minimum tipping has been set to ' + plugin_tip + ' sats based on your inscriptions. A suggestion has been added to the tip.');
+            $('#tip-usd').innerHTML = Number(await radiowavesToDollars($('#tip').value)).toFixed(2);
+            alert('Minimum tipping has been set to ' + plugin_tip + ' radiowaves based on your inscriptions. A suggestion has been added to the tip.');
             return;
         }
     }
@@ -986,7 +986,7 @@ async function run(estimate) {
 
     if(estimate)
     {
-        $('#estimated-fees').innerHTML = ' = ' + total_fees + ' sats ($' + (Number(await satsToDollars(total_fees)).toFixed(2)) + ')';
+        $('#estimated-fees').innerHTML = ' = ' + total_fees + ' radiowaves ($' + (Number(await radiowavesToDollars(total_fees)).toFixed(2)) + ')';
         return files;
     }
 
@@ -1009,13 +1009,13 @@ async function run(estimate) {
         total_fees += (50 * feerate) + tip;
     }
 
-    let sats_price = await satsToDollars(total_fees);
-    sats_price = Math.floor(sats_price * 100) / 100;
+    let radiowaves_price = await radiowavesToDollars(total_fees);
+    radiowaves_price = Math.floor(radiowaves_price * 100) / 100;
 
-    let html = `<p>Please send at least <strong>${total_fees} sats</strong> ($${sats_price}) to the address below (click to copy). Once you sent the amount, do NOT close this window!</p><p><input readonly="readonly" onclick="copyFundingAddress()" id="fundingAddress" type="text" value="${fundingAddress}" style="width: 80%;" /> <span id="fundingAddressCopied"></span></p>`;
+    let html = `<p>Please send at least <strong>${total_fees} radiowaves</strong> ($${radiowaves_price}) to the address below (click to copy). Once you sent the amount, do NOT close this window!</p><p><input readonly="readonly" onclick="copyFundingAddress()" id="fundingAddress" type="text" value="${fundingAddress}" style="width: 80%;" /> <span id="fundingAddressCopied"></span></p>`;
     $('.display').innerHTML = html;
 
-    let qr_value = "bitcoin:" + fundingAddress + "?amount=" + satsToBitcoin(total_fees);
+    let qr_value = "bitnet:" + fundingAddress + "?amount=" + radiowavesToBitcoin(total_fees);
     console.log("qr:", qr_value);
 
     let overhead = total_fees - total_fee - (padding * inscriptions.length) - tip;
@@ -1032,7 +1032,7 @@ async function run(estimate) {
 
     $('.display').append(createQR(qr_value));
     $('.display').innerHTML += `<p class="checking_mempool">Checking the mempool<span class="dots">.</span></p>`;
-    $('.display').innerHTML += '<p>' + (padding * inscriptions.length) + ` sats will go to the address.</p><p>${total_fee} sats will go to miners as a mining fee.</p><p>${overhead} sats overhead will be used as boost.</p><p>${tip} sats for developer tipping.</p>`;
+    $('.display').innerHTML += '<p>' + (padding * inscriptions.length) + ` radiowaves will go to the address.</p><p>${total_fee} radiowaves will go to miners as a mining fee.</p><p>${overhead} radiowaves overhead will be used as boost.</p><p>${tip} radiowaves for developer tipping.</p>`;
     $('.display').style.display = "block";
     $('#setup').style.display = "none";
 
@@ -1183,8 +1183,8 @@ async function run(estimate) {
 
         } catch (e) {
 
-            let html = `<p style="background-color: white; color: black;">Inscription #${vout} transaction:</p><p style="word-wrap: break-word;"><a href="https://mempool.space/${mempoolNetwork}tx/${_txid2}" target="_blank">https://mempool.space/${mempoolNetwork}tx/${_txid2}</a></p>`;
-            html += `<p style="background-color: white; color: black;">Ordinals explorer (after tx confirmation):</p><p style="word-wrap: break-word;"><a href="https://ordinals.com/inscription/${_txid2}i0" target="_blank">https://ordinals.com/inscription/${_txid2}i0</a></p>`;
+            let html = `<p style="background-color: white; color: black;">Inscription #${vout} transaction:</p><p style="word-wrap: break-word;"><a href="https://bitexplorer.io/${mempoolNetwork}tx/${_txid2}" target="_blank">https://bitexplorer.io/${mempoolNetwork}tx/${_txid2}</a></p>`;
+            html += `<p style="background-color: white; color: black;">Bitordinals explorer (after tx confirmation):</p><p style="word-wrap: break-word;"><a href="https://bitordinals.io/inscription/${_txid2}i0" target="_blank">https://bitordinals.io/inscription/${_txid2}i0</a></p>`;
             html += '<hr/>';
             $('.modal-content').innerHTML += html;
         }
@@ -1315,7 +1315,7 @@ async function recover(index, utxo_vout, to, privkey) {
     }
 
     let plainTapKey = tx[index].output.scriptPubKey[1];
-    let response = await getData('https://mempool.space/'+mempoolNetwork+'api/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
+    let response = await getData('https://bitexplorer.io/'+mempoolNetwork+'api/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
     let utxos = JSON.parse(response);
     let utxo = null;
 
@@ -1366,7 +1366,7 @@ async function recover(index, utxo_vout, to, privkey) {
 
     if(utxo.value - base_fee <= 0){
 
-        $('#recovery-item-'+privkey+'-'+utxo_vout).innerHTML += '<div style="font-size: 14px;">Nothing found to recover: ' + (utxo.value - base_fee) + ' sats</div>';
+        $('#recovery-item-'+privkey+'-'+utxo_vout).innerHTML += '<div style="font-size: 14px;">Nothing found to recover: ' + (utxo.value - base_fee) + ' radiowaves</div>';
 
         return;
     }
@@ -1485,7 +1485,7 @@ function sleep(ms) {
 }
 
 async function getMaxFeeRate() {
-    let fees = await getData("https://mempool.space/" + mempoolNetwork + "api/v1/fees/recommended");
+    let fees = await getData("https://bitexplorer.io/" + mempoolNetwork + "api/v1/fees/recommended");
     fees = JSON.parse(fees);
     // if ( !( "minimumFee" in fees ) ) return "error -- site down";
     // var minfee = fees[ "minimumFee" ];
@@ -1495,7 +1495,7 @@ async function getMaxFeeRate() {
 }
 
 async function getMinFeeRate() {
-    let fees = await getData("https://mempool.space/" + mempoolNetwork + "api/v1/fees/recommended");
+    let fees = await getData("https://bitexplorer.io/" + mempoolNetwork + "api/v1/fees/recommended");
     fees = JSON.parse(fees);
     if (!("minimumFee" in fees)) return "error -- site down";
     let minfee = fees["minimumFee"];
@@ -1525,7 +1525,7 @@ function isValidJson(content) {
 }
 
 async function getAllFeeRates() {
-    let fees = await getData("https://mempool.space/" + mempoolNetwork + "api/v1/fees/recommended");
+    let fees = await getData("https://bitexplorer.io/" + mempoolNetwork + "api/v1/fees/recommended");
     fees = JSON.parse(fees);
     return fees;
 }
@@ -1568,7 +1568,7 @@ async function pushBTCpmt(rawtx) {
 
     try
     {
-        txid = await postData("https://mempool.space/" + mempoolNetwork + "api/tx", rawtx);
+        txid = await postData("https://bitexplorer.io/" + mempoolNetwork + "api/tx", rawtx);
 
         if( ( txid.toLowerCase().includes('rpc error') || txid.toLowerCase().includes('too many requests') || txid.toLowerCase().includes('bad request') ) && !txid.includes('descendant'))
         {
@@ -1679,7 +1679,7 @@ async function addressReceivedMoneyInThisTx(address) {
 
     try
     {
-        nonjson = await getData("https://mempool.space/" + mempoolNetwork + "api/address/" + address + "/txs");
+        nonjson = await getData("https://bitexplorer.io/" + mempoolNetwork + "api/address/" + address + "/txs");
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
         {
@@ -1716,7 +1716,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 
     try
     {
-        url = "https://mempool.space/" + mempoolNetwork + "api/address/" + address;
+        url = "https://bitexplorer.io/" + mempoolNetwork + "api/address/" + address;
         nonjson = await getData(url);
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
@@ -1746,7 +1746,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 }
 
 async function probeAddress(address) {
-    let url = "https://mempool.space/" + mempoolNetwork + "api/address/" + address;
+    let url = "https://bitexplorer.io/" + mempoolNetwork + "api/address/" + address;
     let nonjson = await getData(url);
     if (!isValidJson(nonjson)) return false;
     return true;
@@ -1784,17 +1784,17 @@ function timer(num) {
     }, 1000);
 }
 
-function satsToBitcoin(sats) {
-    if (sats >= 100000000) sats = sats * 10;
-    let string = String(sats).padStart(8, "0").slice(0, -9) + "." + String(sats).padStart(8, "0").slice(-9);
+function radiowavesToBitcoin(radiowaves) {
+    if (radiowaves >= 100000000) radiowaves = radiowaves * 10;
+    let string = String(radiowaves).padStart(8, "0").slice(0, -9) + "." + String(radiowaves).padStart(8, "0").slice(-9);
     if (string.substring(0, 1) == ".") string = "0" + string;
     return string;
 }
 
-async function satsToDollars(sats) {
-    if (sats >= 100000000) sats = sats * 10;
+async function radiowavesToDollars(radiowaves) {
+    if (radiowaves >= 100000000) radiowaves = radiowaves * 10;
     let bitcoin_price = sessionStorage["bitcoin_price"];
-    let value_in_dollars = Number(String(sats).padStart(8, "0").slice(0, -9) + "." + String(sats).padStart(8, "0").slice(-9)) * bitcoin_price;
+    let value_in_dollars = Number(String(radiowaves).padStart(8, "0").slice(0, -9) + "." + String(radiowaves).padStart(8, "0").slice(-9)) * bitcoin_price;
     return value_in_dollars;
 }
 
@@ -1810,8 +1810,8 @@ $$('.fee').forEach(function (item) {
         });
         this.getElementsByClassName("num")[0].style.backgroundColor = "green";
         sessionStorage["feerate"] = this.getElementsByClassName("num")[0].innerText;
-        $('#sats_per_byte').innerText = Number(this.getElementsByClassName("num")[0].innerText);
-        $('#sats_range').value = Number(this.getElementsByClassName("num")[0].innerText);
+        $('#radiowaves_per_byte').innerText = Number(this.getElementsByClassName("num")[0].innerText);
+        $('#radiowaves_range').value = Number(this.getElementsByClassName("num")[0].innerText);
     }
 });
 
@@ -1844,7 +1844,7 @@ function checkAddress() {
         $('.type_of_address').style.borderStyle = "none";
         if(isValidAddress())
         {
-            $('#transfer-balance-link').href = 'https://unisat.io/brc20?q=' + $('.address').value;
+            $('#transfer-balance-link').href = 'https://unisat.io/bit20?q=' + $('.address').value;
         }
     }
 }
@@ -1854,7 +1854,7 @@ $('.address').onpaste = checkAddress;
 $('.address').onkeyup = checkAddress;
 
 async function isUsedDomain(domain) {
-    let data = await getData(`https://api.sats.id/names/${encodeURIComponent(domain)}`);
+    let data = await getData(`https://api.radiowaves.id/names/${encodeURIComponent(domain)}`);
     console.log("data:", data);
     data = JSON.parse(data);
     console.log("data:", data);
@@ -1920,26 +1920,26 @@ async function checkUnisatDomain() {
     let i = 1;
     let registered = [];
     let rate_limited = false;
-    let sats_domains = $('.unisat_text').value.split("\n");
-    let sats_domains_cleaned = [];
+    let radiowaves_domains = $('.unisat_text').value.split("\n");
+    let radiowaves_domains_cleaned = [];
 
-    for (let sats_domain in sats_domains) {
+    for (let radiowaves_domain in radiowaves_domains) {
 
-        let domain = sats_domains[sats_domain].trim();
+        let domain = radiowaves_domains[radiowaves_domain].trim();
 
-        if (domain == '' || sats_domains_cleaned.includes(domain)) {
+        if (domain == '' || radiowaves_domains_cleaned.includes(domain)) {
 
             continue;
         }
 
-        sats_domains_cleaned.push(domain);
+        radiowaves_domains_cleaned.push(domain);
     }
 
-    for (let sats_domain in sats_domains_cleaned) {
+    for (let radiowaves_domain in radiowaves_domains_cleaned) {
 
-        let domain = sats_domains_cleaned[sats_domain].trim();
+        let domain = radiowaves_domains_cleaned[radiowaves_domain].trim();
 
-        $('.unisat_checker').innerHTML = 'Checking...(' + i + '/' + sats_domains_cleaned.length + ')';
+        $('.unisat_checker').innerHTML = 'Checking...(' + i + '/' + radiowaves_domains_cleaned.length + ')';
 
         let isUsed = await isUsedUnisatDomain(domain);
 
@@ -1979,26 +1979,26 @@ async function checkDomain() {
     let i = 1;
     let registered = [];
     let rate_limited = false;
-    let sats_domains = $('.dns').value.split("\n");
-    let sats_domains_cleaned = [];
+    let radiowaves_domains = $('.dns').value.split("\n");
+    let radiowaves_domains_cleaned = [];
 
-    for (let sats_domain in sats_domains) {
+    for (let radiowaves_domain in radiowaves_domains) {
 
-        let domain = sats_domains[sats_domain].trim();
+        let domain = radiowaves_domains[radiowaves_domain].trim();
 
-        if (domain == '' || sats_domains_cleaned.includes(domain)) {
+        if (domain == '' || radiowaves_domains_cleaned.includes(domain)) {
 
             continue;
         }
 
-        sats_domains_cleaned.push(domain);
+        radiowaves_domains_cleaned.push(domain);
     }
 
-    for (let sats_domain in sats_domains_cleaned) {
+    for (let radiowaves_domain in radiowaves_domains_cleaned) {
 
-        let domain = sats_domains_cleaned[sats_domain].trim();
+        let domain = radiowaves_domains_cleaned[radiowaves_domain].trim();
 
-        $('.dns_checker').innerHTML = 'Checking...(' + i + '/' + sats_domains_cleaned.length + ')';
+        $('.dns_checker').innerHTML = 'Checking...(' + i + '/' + radiowaves_domains_cleaned.length + ')';
 
         let isUsed = await isUsedDomain(domain);
 
@@ -2078,8 +2078,8 @@ async function init(num) {
         let isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
         if (isSafari) $('.safari_warning').style.display = "block";
         let minfee = await getMinFeeRate();
-        $('#sats_per_byte').innerText = minfee;
-        $('#sats_range').value = minfee;
+        $('#radiowaves_per_byte').innerText = minfee;
+        $('#radiowaves_range').value = minfee;
     }
     num = num + 1;
     let allrates = await getAllFeeRates();
@@ -2091,8 +2091,8 @@ async function init(num) {
         if (item.style.backgroundColor == "green" || getComputedStyle(item).backgroundColor == "rgb(0, 128, 0)") isgreen = item;
     });
     if (isgreen) {
-        $('#sats_per_byte').innerText = Number(isgreen.innerText);
-        $('#sats_range').value = Number(isgreen.innerText);
+        $('#radiowaves_per_byte').innerText = Number(isgreen.innerText);
+        $('#radiowaves_range').value = Number(isgreen.innerText);
         sessionStorage["feerate"] = isgreen.innerText;
     }
     sessionStorage["bitcoin_price"] = await getBitcoinPrice();

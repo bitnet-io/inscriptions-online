@@ -7,7 +7,7 @@ if(!isset($_GET['text']))
     exit;
 }
 
-$url = "https://unisat.io/brc20-api/inscriptions/category/unisat/existence";
+$url = "https://unisat.io/bit20-api/inscriptions/category/unisat/existence";
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);

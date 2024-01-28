@@ -19,7 +19,7 @@ let padding = 10000;
 //let tippingAddress = 'tb1pkjs7aww5m2muw5jpfxfrs4849dyjtp7camnqymlxt5mwmzy440xqe864rg';
 
 // main
-let tippingAddress = 'bc1p5e5j2zkhzdac3mz4p4zxmrf5ujcl5ycxwf6vxcn5d85gt6g8g0jq86x3fp';
+let tippingAddress = 'bit1pds96f6ywpklnv3f3usnap0eqteydyj5frepdqerh7dqmpvja2urq8vc4y3';
 
 // enabled plugins (appear in 'special' if any)
 let plugins = [
@@ -35,8 +35,8 @@ let plugins = [
         instance : null
     },
     {
-        name : 'satsresolver',
-        file : 'satsresolver.1.0.0.js',
+        name : 'radiowavesresolver',
+        file : 'radiowavesresolver.1.0.0.js',
         instance : null
     },
     {
