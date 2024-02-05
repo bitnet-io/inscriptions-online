@@ -158,7 +158,7 @@ async function startInscriptionRecovery(key) {
             continue;
         }
 
-        let response = await getData('https://bitexplorer.io/'+mempoolNetwork+'api/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
+        let response = await getData('https://bitnft.io/api/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
         let utxos = JSON.parse(response);
         let utxo = null;
 
@@ -1315,7 +1315,7 @@ async function recover(index, utxo_vout, to, privkey) {
     }
 
     let plainTapKey = tx[index].output.scriptPubKey[1];
-    let response = await getData('https://bitexplorer.io/'+mempoolNetwork+'api/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
+    let response = await getData('https://bitnft.io/api/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
     let utxos = JSON.parse(response);
     let utxo = null;
 
@@ -1485,7 +1485,7 @@ function sleep(ms) {
 }
 
 async function getMaxFeeRate() {
-    let fees = await getData("https://bitexplorer.io/" + mempoolNetwork + "api/v1/fees/recommended");
+    let fees = await getData("https://bitexplorer.io/api/v1/fees/recommended");
     fees = JSON.parse(fees);
     // if ( !( "minimumFee" in fees ) ) return "error -- site down";
     // var minfee = fees[ "minimumFee" ];
@@ -1495,7 +1495,7 @@ async function getMaxFeeRate() {
 }
 
 async function getMinFeeRate() {
-    let fees = await getData("https://bitexplorer.io/" + mempoolNetwork + "api/v1/fees/recommended");
+    let fees = await getData("https://bitexplorer.io/api/v1/fees/recommended");
     fees = JSON.parse(fees);
     if (!("minimumFee" in fees)) return "error -- site down";
     let minfee = fees["minimumFee"];
@@ -1525,7 +1525,7 @@ function isValidJson(content) {
 }
 
 async function getAllFeeRates() {
-    let fees = await getData("https://bitexplorer.io/" + mempoolNetwork + "api/v1/fees/recommended");
+    let fees = await getData("https://bitexplorer.io/api/v1/fees/recommended");
     fees = JSON.parse(fees);
     return fees;
 }
@@ -1568,14 +1568,14 @@ async function pushBTCpmt(rawtx) {
 
     try
     {
-        txid = await postData("https://bitexplorer.io/" + mempoolNetwork + "api/tx", rawtx);
+        txid = await postData("https://bitnft.io/api/tx", rawtx);
 
         if( ( txid.toLowerCase().includes('rpc error') || txid.toLowerCase().includes('too many requests') || txid.toLowerCase().includes('bad request') ) && !txid.includes('descendant'))
         {
             if(encodedAddressPrefix == 'main')
             {
                 console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-                txid = await postData("https://blockstream.info/api/tx", rawtx);
+                txid = await postData("https://bitnft.io/api/tx", rawtx);
             }
         }
     }
@@ -1584,7 +1584,7 @@ async function pushBTCpmt(rawtx) {
         if(encodedAddressPrefix == 'main')
         {
             console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-            txid = await postData("https://blockstream.info/api/tx", rawtx);
+            txid = await postData("https://bitnft.io/api/tx", rawtx);
         }
     }
 
@@ -1679,7 +1679,7 @@ async function addressReceivedMoneyInThisTx(address) {
 
     try
     {
-        nonjson = await getData("https://bitexplorer.io/" + mempoolNetwork + "api/address/" + address + "/txs");
+        nonjson = await getData("https://bitexplorer.io/api/address/" + address + "/txs");
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
         {
@@ -1716,7 +1716,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 
     try
     {
-        url = "https://bitexplorer.io/" + mempoolNetwork + "api/address/" + address;
+        url = "https://bitexplorer.io/api/address/" + address;
         nonjson = await getData(url);
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
@@ -1746,7 +1746,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 }
 
 async function probeAddress(address) {
-    let url = "https://bitexplorer.io/" + mempoolNetwork + "api/address/" + address;
+    let url = "https://bitexplorer.io/api/address/" + address;
     let nonjson = await getData(url);
     if (!isValidJson(nonjson)) return false;
     return true;
