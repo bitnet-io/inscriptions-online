@@ -136,9 +136,9 @@ function byteperfectsol(){
 
                                         let kb = Math.floor(blob.size / 1024);
 
-                                        if(kb > 350)
+                                        if(kb > 999)
                                         {
-                                            throw new Error('max. file size of 350kb exceeded');
+                                            throw new Error('max. file size of 1MB exceeded');
                                         }
 
                                         let file, sha256, hash_result;

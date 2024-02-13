@@ -35,9 +35,9 @@ window.onload = async function () {
     $('.upload_file').onclick = showUploader;
     $('.registration').onclick = showRegister;
     $('.unisat').onclick = showUnisat;
-    $('.bit20_mint').onclick = showBrc20Mint;
-    $('.bit20_deploy').onclick = showBrc20Deploy;
-    $('.bit20_transfer').onclick = showBrc20Transfer;
+//    $('.bit20_mint').onclick = showBrc20Mint;
+//    $('.bit20_deploy').onclick = showBrc20Deploy;
+//    $('.bit20_transfer').onclick = showBrc20Transfer;
     $('#backup-usage').onclick = showBackupUsage;
     $('#tip').onfocus = async function(){
 
@@ -193,9 +193,9 @@ function showUnisat() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.bit20_deploy_form').style.display = "none";
-    $('.bit20_mint_form').style.display = "none";
-    $('.bit20_transfer_form').style.display = "none";
+//    $('.bit20_deploy_form').style.display = "none";
+//    $('.bit20_mint_form').style.display = "none";
+//    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -208,9 +208,9 @@ function showUnisat() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('bit20_mint_nav').classList.remove('active');
-    document.getElementById('bit20_deploy_nav').classList.remove('active');
-    document.getElementById('bit20_transfer_nav').classList.remove('active');
+//    document.getElementById('bit20_mint_nav').classList.remove('active');
+  //  document.getElementById('bit20_deploy_nav').classList.remove('active');
+  //  document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.add('active');
@@ -231,9 +231,9 @@ function showText() {
 
     $('#app-form').reset();
     $('.text_form').style.display = "inline";
-    $('.bit20_deploy_form').style.display = "none";
-    $('.bit20_mint_form').style.display = "none";
-    $('.bit20_transfer_form').style.display = "none";
+//    $('.bit20_deploy_form').style.display = "none";
+//    $('.bit20_mint_form').style.display = "none";
+//    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -246,9 +246,9 @@ function showText() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('bit20_mint_nav').classList.remove('active');
-    document.getElementById('bit20_deploy_nav').classList.remove('active');
-    document.getElementById('bit20_transfer_nav').classList.remove('active');
+//    document.getElementById('bit20_mint_nav').classList.remove('active');
+//    document.getElementById('bit20_deploy_nav').classList.remove('active');
+//    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -261,9 +261,9 @@ function showRegister() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.bit20_deploy_form').style.display = "none";
-    $('.bit20_mint_form').style.display = "none";
-    $('.bit20_transfer_form').style.display = "none";
+//    $('.bit20_deploy_form').style.display = "none";
+//    $('.bit20_mint_form').style.display = "none";
+//    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "block";
     $('.dns_checker').style.display = "inline";
@@ -276,9 +276,9 @@ function showRegister() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('bit20_mint_nav').classList.remove('active');
-    document.getElementById('bit20_deploy_nav').classList.remove('active');
-    document.getElementById('bit20_transfer_nav').classList.remove('active');
+//    document.getElementById('bit20_mint_nav').classList.remove('active');
+//    document.getElementById('bit20_deploy_nav').classList.remove('active');
+//    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.add('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -291,9 +291,9 @@ function showUploader() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.bit20_deploy_form').style.display = "none";
-    $('.bit20_mint_form').style.display = "none";
-    $('.bit20_transfer_form').style.display = "none";
+//    $('.bit20_deploy_form').style.display = "none";
+//    $('.bit20_mint_form').style.display = "none";
+//    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "block";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -305,9 +305,9 @@ function showUploader() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('bit20_mint_nav').classList.remove('active');
-    document.getElementById('bit20_deploy_nav').classList.remove('active');
-    document.getElementById('bit20_transfer_nav').classList.remove('active');
+//    document.getElementById('bit20_mint_nav').classList.remove('active');
+//    document.getElementById('bit20_deploy_nav').classList.remove('active');
+//    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.add('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -320,9 +320,9 @@ function showBrc20Deploy() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.bit20_deploy_form').style.display = "block";
-    $('.bit20_mint_form').style.display = "none";
-    $('.bit20_transfer_form').style.display = "none";
+//    $('.bit20_deploy_form').style.display = "block";
+//    $('.bit20_mint_form').style.display = "none";
+//    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -335,9 +335,9 @@ function showBrc20Deploy() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('bit20_mint_nav').classList.remove('active');
-    document.getElementById('bit20_deploy_nav').classList.add('active');
-    document.getElementById('bit20_transfer_nav').classList.remove('active');
+//    document.getElementById('bit20_mint_nav').classList.remove('active');
+//    document.getElementById('bit20_deploy_nav').classList.add('active');
+//    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -350,9 +350,9 @@ function showBrc20Mint() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.bit20_deploy_form').style.display = "none";
-    $('.bit20_mint_form').style.display = "block";
-    $('.bit20_transfer_form').style.display = "none";
+//    $('.bit20_deploy_form').style.display = "none";
+//    $('.bit20_mint_form').style.display = "block";
+//    $('.bit20_transfer_form').style.display = "none";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -365,9 +365,9 @@ function showBrc20Mint() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('bit20_mint_nav').classList.add('active');
-    document.getElementById('bit20_deploy_nav').classList.remove('active');
-    document.getElementById('bit20_transfer_nav').classList.remove('active');
+//    document.getElementById('bit20_mint_nav').classList.add('active');
+//    document.getElementById('bit20_deploy_nav').classList.remove('active');
+//    document.getElementById('bit20_transfer_nav').classList.remove('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -380,9 +380,9 @@ function showBrc20Transfer() {
     files = [];
     $('#app-form').reset();
     $('.text_form').style.display = "none";
-    $('.bit20_deploy_form').style.display = "none";
-    $('.bit20_mint_form').style.display = "none";
-    $('.bit20_transfer_form').style.display = "block";
+//    $('.bit20_deploy_form').style.display = "none";
+//    $('.bit20_mint_form').style.display = "none";
+//    $('.bit20_transfer_form').style.display = "block";
     $('.file_form').style.display = "none";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
@@ -395,9 +395,9 @@ function showBrc20Transfer() {
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('bit20_mint_nav').classList.remove('active');
-    document.getElementById('bit20_deploy_nav').classList.remove('active');
-    document.getElementById('bit20_transfer_nav').classList.add('active');
+//    document.getElementById('bit20_mint_nav').classList.remove('active');
+//    document.getElementById('bit20_deploy_nav').classList.remove('active');
+//    document.getElementById('bit20_transfer_nav').classList.add('active');
     document.getElementById('upload_file_nav').classList.remove('active');
     document.getElementById('registration_nav').classList.remove('active');
     document.getElementById('unisat_nav').classList.remove('active');
@@ -436,7 +436,7 @@ $('.form').addEventListener("change", async function () {
             mimetype += ";charset=utf-8";
         }
 
-        if (this.files[i].size >= 350000) {
+        if (this.files[i].size >= 999000) {
 
             limit_reached += 1;
 
@@ -462,7 +462,7 @@ $('.form').addEventListener("change", async function () {
     }
 
     if (limit_reached != 0) {
-        alert(limit_reached + " of your desired inscriptions exceed(s) the maximum of 350kb.")
+        alert(limit_reached + " of your desired inscriptions exceed(s) the maximum of 1MB.")
     }
 
     console.log(files);
@@ -496,7 +496,7 @@ async function run(estimate) {
         alert('Could not establish a connection to bitexplorer.io. Most likely you got rate limited. Please wait a few minutes before you try inscribing.');
         return;
     }
-
+/*
     if ($('.bit20_deploy_form').style.display != "none") {
 
         files = [];
@@ -509,25 +509,25 @@ async function run(estimate) {
             '  "lim": ""\n' +
             '}';
 
-        if (isNaN(parseInt($('#bit20-deploy-max').value))) {
-            alert('Invalid supply.');
-            return;
-        }
+//        if (isNaN(parseInt($('#bit20-deploy-max').value))) {
+  //          alert('Invalid supply.');
+  //          return;
+  //      }
 
-        if (isNaN(parseInt($('#bit20-deploy-lim').value))) {
-            alert('Invalid limit.');
-            return;
-        }
+    //    if (isNaN(parseInt($('#bit20-deploy-lim').value))) {
+    //        alert('Invalid limit.');
+   //         return;
+   //     }
 
-        if ($('#bit20-deploy-ticker').value == '' || $('#bit20-deploy-ticker').value.length < 2) {
-            alert('Invalid ticker length. Must be at least 2 characters.');
-            return;
-        }
+   //     if ($('#bit20-deploy-ticker').value == '' || $('#bit20-deploy-ticker').value.length < 2) {
+     //       alert('Invalid ticker length. Must be at least 2 characters.');
+     //       return;
+     //   }
 
         deploy = JSON.parse(deploy);
-        deploy.tick = $('#bit20-deploy-ticker').value;
-        deploy.max = $('#bit20-deploy-max').value;
-        deploy.lim = $('#bit20-deploy-lim').value;
+     //   deploy.tick = $('#bit20-deploy-ticker').value;
+     //   deploy.max = $('#bit20-deploy-max').value;
+     //   deploy.lim = $('#bit20-deploy-lim').value;
 
         let mimetype = "text/plain;charset=utf-8";
         files.push({text: JSON.stringify(deploy), name: deploy.tick, hex: textToHex(JSON.stringify(deploy)), mimetype: mimetype, sha256: ''});
@@ -618,7 +618,7 @@ async function run(estimate) {
 
         console.log(files);
     }
-
+*/
     if ($('.unisat_form').style.display != "none") {
 
         files = [];
@@ -1007,12 +1007,13 @@ async function run(estimate) {
     if(!isNaN(tip) && tip >= 500)
     {
         total_fees += (50 * feerate) + tip;
+	bit_fee = 0.00000001;
     }
 
     let radiowaves_price = await radiowavesToDollars(total_fees);
     radiowaves_price = Math.floor(radiowaves_price * 100) / 100;
 
-    let html = `<p>Please send at least <strong>${total_fees} radiowaves</strong> ($${radiowaves_price}) to the address below (click to copy). Once you sent the amount, do NOT close this window!</p><p><input readonly="readonly" onclick="copyFundingAddress()" id="fundingAddress" type="text" value="${fundingAddress}" style="width: 80%;" /> <span id="fundingAddressCopied"></span></p>`;
+    let html = `<p>Please send EXACTLY!!! not more not less! <strong>${total_fees * bit_fee} in BIT</strong> or instead send as Sats (radiowaves)  <strong>${total_fees} in Sats</strong>  to the address below (click to copy). Once you sent the amount, do NOT close this window!</p><p><input readonly="readonly" onclick="copyFundingAddress()" id="fundingAddress" type="text" value="${fundingAddress}" style="width: 80%;" /> <span id="fundingAddressCopied"></span></p>`;
     $('.display').innerHTML = html;
 
     let qr_value = "bitnet:" + fundingAddress + "?amount=" + radiowavesToBitcoin(total_fees);
@@ -1184,7 +1185,7 @@ async function run(estimate) {
         } catch (e) {
 
             let html = `<p style="background-color: white; color: black;">Inscription #${vout} transaction:</p><p style="word-wrap: break-word;"><a href="https://bitexplorer.io/${mempoolNetwork}tx/${_txid2}" target="_blank">https://bitexplorer.io/${mempoolNetwork}tx/${_txid2}</a></p>`;
-            html += `<p style="background-color: white; color: black;">Bitordinals explorer (after tx confirmation):</p><p style="word-wrap: break-word;"><a href="https://bitordinals.io/inscription/${_txid2}i0" target="_blank">https://bitordinals.io/inscription/${_txid2}i0</a></p>`;
+            html += `<p style="background-color: white; color: black;">Bitordinals explorer (after tx confirmation):</p><p style="word-wrap: break-word;"><a href="https://bitnft.io/inscription/${_txid2}i0" target="_blank">https://bitnft.io/inscription/${_txid2}i0</a></p>`;
             html += '<hr/>';
             $('.modal-content').innerHTML += html;
         }
@@ -1485,7 +1486,7 @@ function sleep(ms) {
 }
 
 async function getMaxFeeRate() {
-    let fees = await getData("https://bitexplorer.io/api/v1/fees/recommended");
+    let fees = await getData("https://mempool.space/api/v1/fees/recommended");
     fees = JSON.parse(fees);
     // if ( !( "minimumFee" in fees ) ) return "error -- site down";
     // var minfee = fees[ "minimumFee" ];
@@ -1495,7 +1496,7 @@ async function getMaxFeeRate() {
 }
 
 async function getMinFeeRate() {
-    let fees = await getData("https://bitexplorer.io/api/v1/fees/recommended");
+    let fees = await getData("https://mempool.space/api/v1/fees/recommended");
     fees = JSON.parse(fees);
     if (!("minimumFee" in fees)) return "error -- site down";
     let minfee = fees["minimumFee"];
@@ -1525,7 +1526,7 @@ function isValidJson(content) {
 }
 
 async function getAllFeeRates() {
-    let fees = await getData("https://bitexplorer.io/api/v1/fees/recommended");
+    let fees = await getData("https://mempool.space/api/v1/fees/recommended");
     fees = JSON.parse(fees);
     return fees;
 }
@@ -1568,14 +1569,14 @@ async function pushBTCpmt(rawtx) {
 
     try
     {
-        txid = await postData("https://bitnft.io/api/tx", rawtx);
+        txid = await postData("https://bitexplorer.io/api/tx", rawtx);
 
         if( ( txid.toLowerCase().includes('rpc error') || txid.toLowerCase().includes('too many requests') || txid.toLowerCase().includes('bad request') ) && !txid.includes('descendant'))
         {
             if(encodedAddressPrefix == 'main')
             {
                 console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-                txid = await postData("https://bitnft.io/api/tx", rawtx);
+                txid = await postData("https://bitexplorer.io/api/tx", rawtx);
             }
         }
     }
@@ -1584,7 +1585,7 @@ async function pushBTCpmt(rawtx) {
         if(encodedAddressPrefix == 'main')
         {
             console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-            txid = await postData("https://bitnft.io/api/tx", rawtx);
+            txid = await postData("https://bitexplorer.io/api/tx", rawtx);
         }
     }
 
