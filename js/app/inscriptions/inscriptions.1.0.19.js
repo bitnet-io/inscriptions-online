@@ -1013,7 +1013,18 @@ async function run(estimate) {
     let radiowaves_price = await radiowavesToDollars(total_fees);
     radiowaves_price = Math.floor(radiowaves_price * 100) / 100;
 
-    let html = `<p>Please send EXACTLY!!! not more not less! <strong>${total_fees * bit_fee} in BIT</strong> or instead send as Sats (radiowaves)  <strong>${total_fees} in Sats</strong>  to the address below (click to copy). Once you sent the amount, do NOT close this window!</p><p><input readonly="readonly" onclick="copyFundingAddress()" id="fundingAddress" type="text" value="${fundingAddress}" style="width: 80%;" /> <span id="fundingAddressCopied"></span></p>`;
+//    let html = `<p>Please send EXACTLY!!! not more not less! <strong>${total_fees * bit_fee} in BIT</strong> or instead send as Sats (radiowaves)  <strong>${total_fees} in Sats</strong>  to the address below (click to copy). Once you sent the amount, do NOT close this window!</p>
+//<p>address to send to click to copy address</p>
+//<p><input readonly="readonly" onclick="copyFundingAddress()" id="fundingAddress" type="text" value="${fundingAddress}" style="width: 80%;" /> <span id="fundingAddressCopied"></span></p>
+//<p>amount to send in BIT</p><p><input readonly="readonly" onclick="copyBITAddress()" id="BITAddress" type="text" value="${total_fees * bit_fee}" style="width: 80%;" /> <span id="BITAddressCopied"></span></p>
+//`;
+//<!--<p>or if you want to send it as Sats instead (radiowaves)</p><p><input readonly="readonly" onclick="copySatsAddress()" id="SatsAddress" type="text" value="${total_fees}" style="width: 80%;" /> <span id="SatsAddressCopied"></span></p>-->
+
+    let html = `<p>Please send the EXACT amount!!! not more and not less! send this amount <strong>${total_fees * bit_fee} in BIT</strong> to the address below (click to copy). Once you sent the amount, do NOT close this window!! the entire process might take 2 minutes your inscription will post after the next block has a confirmation</p><p>address to send to click to copy address</p><p><input readonly="readonly" onclick="copyFundingAddress()" id="fundingAddress" type="text" value="${fundingAddress}" style="width: 80%;" /> <span id="fundingAddressCopied"></span></p><p>amount to send in BIT</p><p><input readonly="readonly" onclick="copyBITAddress()" id="BITAddress" type="text" value="${total_fees * bit_fee}" style="width: 80%;" /> <span id="BITAddressCopied"></span></p>`;
+
+
+
+
     $('.display').innerHTML = html;
 
     let qr_value = "bitnet:" + fundingAddress + "?amount=" + radiowavesToBitcoin(total_fees);
@@ -1032,7 +1043,7 @@ async function run(estimate) {
     }
 
     $('.display').append(createQR(qr_value));
-    $('.display').innerHTML += `<p class="checking_mempool">Checking the mempool<span class="dots">.</span></p>`;
+    $('.display').innerHTML += `<p class="checking_mempool">Checking the mempool from bitexplorer.io<span class="dots">.</span></p>`;
     $('.display').innerHTML += '<p>' + (padding * inscriptions.length) + ` radiowaves will go to the address.</p><p>${total_fee} radiowaves will go to miners as a mining fee.</p><p>${overhead} radiowaves overhead will be used as boost.</p><p>${tip} radiowaves for developer tipping.</p>`;
     $('.display').style.display = "block";
     $('#setup').style.display = "none";
@@ -1470,6 +1481,32 @@ function copyFundingAddress() {
     setTimeout(function () {
 
         document.getElementById("fundingAddressCopied").innerHTML = '';
+
+    }, 5000);
+}
+
+function copyBITAddress() {
+    let copyText = document.getElementById("BITAddress");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    document.getElementById("BITAddressCopied").innerHTML = ' Copied!';
+    setTimeout(function () {
+
+        document.getElementById("BITAddressCopied").innerHTML = '';
+
+    }, 5000);
+}
+
+function copySatsAddress() {
+    let copyText = document.getElementById("SatsAddress");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    document.getElementById("SatsAddressCopied").innerHTML = ' Copied!';
+    setTimeout(function () {
+
+        document.getElementById("SatsAddressCopied").innerHTML = '';
 
     }, 5000);
 }
