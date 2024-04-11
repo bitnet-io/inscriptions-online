@@ -39,7 +39,7 @@
 
 <div class="app-wrapper">
 
-    <h1>Inscribe</h1>
+    <h1>Deploy</h1>
     <h6 style="margin-top: -15px;">
         Self-custodial bulk inscriptions. The most powerful and cost-effective way to inscribe BitOrdinals on Bitnet IO.
         Join
@@ -54,13 +54,14 @@
                    placeholder="Enter a taproot address from an ordinals wallet">
         </div>
 
-        <p>&gt;&gt; Please choose what you want to inscribe:</p>
+<!--        <p>&gt;&gt; Please choose what you want to inscribe:</p>-->
 
         <div class="options">
             <div>Standard</div>
             <div style="font-size: 14px; color: gray;">Most popular &amp; standard inscriptions</div>
             <ul>
-                <li>
+   <!--
+             <li>
                     <a id="upload_file_nav" class="upload_file active" href="javascript:void(0);">files</a>
                 </li>
                 <li>
@@ -77,12 +78,15 @@
                 <li>
                     <a id="bit20_mint_nav" class="bit20_mint" href="javascript:void(0);">bit-20 mint</a>
                 </li>
+-->
                 <li class="nav-item">
                     <a id="bit20_deploy_nav" class="bit20_deploy" href="javascript:void(0);">bit-20 deploy</a>
                 </li>
+<!--
                 <li class="nav-item">
                     <a id="bit20_transfer_nav" class="bit20_transfer" href="javascript:void(0);">bit-20 transfer</a>
                 </li>
+-->
             </ul>
         </div>
 <!--
@@ -93,7 +97,7 @@
         </div>-->
 
         <form id="app-form">
-
+<!--
             <div class="file_form option_form">
                 <input
                         accept=".json,
@@ -124,7 +128,7 @@
                     Check if file(s) are inscribed already
                 </button>
             </div>
-
+-->
             <div class="text_form option_form">
 
                 <div id="form_container">
@@ -369,7 +373,7 @@
 
 <script src="js/app/app-config.1.0.8.js"></script>
 <script src="js/app/inscriptions/plugins.1.0.2.js"></script>
-<script src="js/app/inscriptions/inscriptions.1.0.19.js"></script>
+<script src="js/app/inscriptions/deploy-ins.js"></script>
 
 </body>
 </html>

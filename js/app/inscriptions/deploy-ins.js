@@ -31,13 +31,13 @@ slider.oninput = function () {
 window.onload = async function () {
 
     $('#padding').value = padding;
-    $('.text').onclick = showText;
-    $('.upload_file').onclick = showUploader;
-    $('.registration').onclick = showRegister;
-    $('.unisat').onclick = showUnisat;
-    $('.bit20_mint').onclick = showBrc20Mint;
+//    $('.text').onclick = showText;
+//    $('.upload_file').onclick = showUploader;
+//    $('.registration').onclick = showRegister;
+//    $('.unisat').onclick = showUnisat;
+//    $('.bit20_mint').onclick = showBrc20Mint;
     $('.bit20_deploy').onclick = showBrc20Deploy;
-    $('.bit20_transfer').onclick = showBrc20Transfer;
+//    $('.bit20_transfer').onclick = showBrc20Transfer;
     $('#backup-usage').onclick = showBackupUsage;
     $('#tip').onfocus = async function(){
 
@@ -294,24 +294,24 @@ function showUploader() {
     $('.bit20_deploy_form').style.display = "none";
     $('.bit20_mint_form').style.display = "none";
     $('.bit20_transfer_form').style.display = "none";
-    $('.file_form').style.display = "block";
+//    $('.file_form').style.display = "block";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
     $('.unisat_form').style.display = "none";
     $('.unisat_checker').style.display = "none";
-    $('.unisat').value = "";
+//    $('.unisat').value = "";
     $('#plugin_form').style.display = 'none';
     $$('.options a').forEach(function(item){
         item.classList.remove('active');
     });
     active_plugin = null;
-    document.getElementById('bit20_mint_nav').classList.remove('active');
+//    document.getElementById('bit20_mint_nav').classList.remove('active');
     document.getElementById('bit20_deploy_nav').classList.remove('active');
-    document.getElementById('bit20_transfer_nav').classList.remove('active');
-    document.getElementById('upload_file_nav').classList.add('active');
-    document.getElementById('registration_nav').classList.remove('active');
-    document.getElementById('unisat_nav').classList.remove('active');
-    document.getElementById('text_nav').classList.remove('active');
+//    document.getElementById('bit20_transfer_nav').classList.remove('active');
+//    document.getElementById('upload_file_nav').classList.add('active');
+//    document.getElementById('registration_nav').classList.remove('active');
+//    document.getElementById('unisat_nav').classList.remove('active');
+//    document.getElementById('text_nav').classList.remove('active');
 }
 
 function showBrc20Deploy() {
@@ -420,7 +420,7 @@ function showBrc20Transfer() {
 
 showUploader();
 
-$('.form').addEventListener("change", async function () {
+/*$('.form').addEventListener("change", async function () {
 
     files = [];
 
@@ -467,7 +467,7 @@ $('.form').addEventListener("change", async function () {
 
     console.log(files);
 });
-
+*/
 $('.startover').addEventListener("click", async function () {
 
     location.reload();
@@ -810,7 +810,7 @@ async function run(estimate) {
         return;
     }*/
 
-    if(active_plugin === null)
+/*    if(active_plugin === null)
     {
         if($('.file_form').style.display == 'block')
         {
@@ -846,7 +846,7 @@ async function run(estimate) {
             return;
         }
     }
-
+*/
     const KeyPair = cryptoUtils.KeyPair;
 
     let seckey = new KeyPair(privkey);
@@ -2054,6 +2054,7 @@ async function checkDomain() {
 
 $('.unisat_checker').onclick = checkUnisatDomain;
 $('.dns_checker').onclick = checkDomain;
+/*
 $('#bytes_checker').onclick = async function () {
     $('#bytes_checker').innerHTML = 'Please wait...';
 
@@ -2093,7 +2094,7 @@ $('#bytes_checker').onclick = async function () {
 
     $('#bytes_checker').innerHTML = 'Check if file(s) are inscribed already';
 }
-
+*/
 async function init(num) {
 
     if (!num) {

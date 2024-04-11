@@ -39,14 +39,20 @@
 
 <div class="app-wrapper">
 
-    <h1>Inscribe</h1>
-    <h6 style="margin-top: -15px;">
+    <h1>BIT-20 MINT for BitOrdinals Wallet</h1>
+<!--    <h6 style="margin-top: -15px;">
         Self-custodial bulk inscriptions. The most powerful and cost-effective way to inscribe BitOrdinals on Bitnet IO.
         Join
         our <a href="https://discord.gg/PUt9ezaAvy" target="_blank">Discord</a>.
-    </h6>
+    </h6>-->
     <h2 class="safari_warning">This tool may not work in safari browser. If you are using that, consider switching.</h2>
     <div id="setup">
+
+
+<p>Receiving address from BitOrdinals wallet(taproot)</p>
+<img src="select-wallet.png" alt="Select Taproot Wallet">
+<br>
+<br>
 
         <div class="mb-3">
             <label for="taproot_address">&gt;&gt; Receiving address <span class="type_of_address">(taproot)</span></label>
@@ -54,13 +60,14 @@
                    placeholder="Enter a taproot address from an ordinals wallet">
         </div>
 
-        <p>&gt;&gt; Please choose what you want to inscribe:</p>
+<!--        <p>&gt;&gt; Please choose what you want to inscribe:</p>-->
 
         <div class="options">
             <div>Standard</div>
             <div style="font-size: 14px; color: gray;">Most popular &amp; standard inscriptions</div>
             <ul>
-                <li>
+   <!--
+             <li>
                     <a id="upload_file_nav" class="upload_file active" href="javascript:void(0);">files</a>
                 </li>
                 <li>
@@ -73,16 +80,21 @@
                     <a id="unisat_nav" class="unisat" href="javascript:void(0);">.unisat domains</a>
                 </li>
 
-
+-->
                 <li>
                     <a id="bit20_mint_nav" class="bit20_mint" href="javascript:void(0);">bit-20 mint</a>
                 </li>
+
+<!--
                 <li class="nav-item">
                     <a id="bit20_deploy_nav" class="bit20_deploy" href="javascript:void(0);">bit-20 deploy</a>
                 </li>
+-->
+<!--
                 <li class="nav-item">
                     <a id="bit20_transfer_nav" class="bit20_transfer" href="javascript:void(0);">bit-20 transfer</a>
                 </li>
+-->
             </ul>
         </div>
 <!--
@@ -93,7 +105,7 @@
         </div>-->
 
         <form id="app-form">
-
+<!--
             <div class="file_form option_form">
                 <input
                         accept=".json,
@@ -124,7 +136,7 @@
                     Check if file(s) are inscribed already
                 </button>
             </div>
-
+-->
             <div class="text_form option_form">
 
                 <div id="form_container">
@@ -369,7 +381,7 @@
 
 <script src="js/app/app-config.1.0.8.js"></script>
 <script src="js/app/inscriptions/plugins.1.0.2.js"></script>
-<script src="js/app/inscriptions/inscriptions.1.0.19.js"></script>
+<script src="js/app/inscriptions/mint-ins.js"></script>
 
 </body>
 </html>
