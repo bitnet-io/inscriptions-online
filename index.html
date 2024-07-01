@@ -30,7 +30,7 @@
         <li>|</li>
         <li><a href="https://bitnft.io">NFT explorer</a></li>
         <li>|</li>
-        <li><a href="https://github.com/bitnet-io/leather-hiro-wallet-bitnet/releases/tag/firefox-chrome">BitOrdinals Wallet</a></li>
+        <li><a href="https://github.com/bitnet-io/BitOrdinals/releases/tag/firefox-chrome-nakamoto-testing">BitOrdinals Wallet</a></li>
         <li>|</li>
         <li><a href="https://github.com/bitnet-io/leather-hiro-wallet-bitnet/releases/tag/how-to">How to inscribe an NFT using BitOrdinal Wallet</a></li>
 
@@ -141,7 +141,7 @@
                 <button style="display: none" id="text-addrow" onclick="addMoreText(); return false;">Add Row</button>
 
                 <div style="margin-top: 15px">
-                    <label for="text-repeat">Repeat</label>
+                    <label for="text-repeat">Repeat (100 or less)</label>
                     <input id="text-repeat" type="text" value="1"
                            placeholder="e.g. 10 to mint ten times"/>
                 </div>
@@ -175,7 +175,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="bit20-mint-repeat">Repeat</label>
+                    <label for="bit20-mint-repeat">Repeat (100 or less)</label>
                     <input id="bit20-mint-repeat" type="text" value="1"
                            placeholder="e.g. 10 to mint ten times"/>
                 </div>
@@ -219,7 +219,7 @@
 
                 <p>
                     2. You can check your transferable balance using <a id="transfer-balance-link"
-                                                                        href="https://unisat.io/bit20?q="
+                                                                        href="https://bitnft.io//ordinals/v1/bit-20/balances/YOUR-BIT-20-TAPROOT-ADDRESS-HERE"
                                                                         target="_blank">this
                     link</a>.
                 </p>
@@ -284,8 +284,8 @@
                 </div>
             </div>
             <div style="margin-top: 15px;" id="sliderange">
-                <label for="radiowaves_range">radiowaves/vB: <span id="radiowaves_per_byte">1</span></label>
-                <input class="form-range" id="radiowaves_range" type="range" min="1" max="500" value="1">
+                <label for="radiowaves_range">radiowaves/vB: <span id="radiowaves_per_byte" value="2" min="2"></span></label>
+                <input class="form-range" id="radiowaves_range" type="range" min="2" max="500" value="2">
             </div>
         </form>
 
@@ -327,7 +327,7 @@
     </div>
 
     <div style="margin-top: 20px; margin-bottom: 20px;">
-        <button class="submit btn btn-primary">Inscribe!</button>
+        <button class="submit btn btn-primary">Inscribe! (double click)</button>
         <button class="estimate btn btn-primary">Estimate Fees</button>
         <span id="estimated-fees"></span>
         <button style="display:none;" class="startover btn btn-primary">Reset</button>

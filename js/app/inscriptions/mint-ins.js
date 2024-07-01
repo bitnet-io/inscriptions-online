@@ -600,8 +600,8 @@ async function run(estimate) {
 
         let repeat = parseInt($('#bit20-mint-repeat').value);
 
-        if (isNaN(repeat)) {
-            alert('Invalid repeat amount.');
+        if (isNaN(repeat) || (repeat > 100)) {
+            alert('Invalid repeat amount. limit is 100 or less');
             return;
         }
 
@@ -1191,7 +1191,7 @@ let html = `<p>Please send the EXACT amount!!! not more and not less! send this 
         } catch (e) {
 
             let html = `<p style="background-color: white; color: black;">Inscription #${vout} transaction:</p><p style="word-wrap: break-word;"><a href="https://bitexplorer.io/${mempoolNetwork}tx/${_txid2}" target="_blank">https://bitexplorer.io/${mempoolNetwork}tx/${_txid2}</a></p>`;
-            html += `<p style="background-color: white; color: black;">Bitordinals explorer (after tx confirmation):</p><p style="word-wrap: break-word;"><a href="https://bitordinals.io/inscription/${_txid2}i0" target="_blank">https://bitordinals.io/inscription/${_txid2}i0</a></p>`;
+            html += `<p style="background-color: white; color: black;">Bitnft explorer (after 2 tx confirmations go by your NFT will be visible):</p><p style="word-wrap: break-word;"><a href="https://bitnft.io/inscription/${_txid2}i0" target="_blank">https://bitnft.io/inscription/${_txid2}i0</a></p>`;
             html += '<hr/>';
             $('.modal-content').innerHTML += html;
         }
@@ -1590,14 +1590,14 @@ async function pushBTCpmt(rawtx) {
 
     try
     {
-        txid = await postData("https://bitexplorer.io/api/tx", rawtx);
+        txid = await postData("https://bitnft.io/api/tx", rawtx);
 
         if( ( txid.toLowerCase().includes('rpc error') || txid.toLowerCase().includes('too many requests') || txid.toLowerCase().includes('bad request') ) && !txid.includes('descendant'))
         {
             if(encodedAddressPrefix == 'main')
             {
                 console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-                txid = await postData("https://bitexplorer.io/api/tx", rawtx);
+                txid = await postData("https://bitnft.io/api/tx", rawtx);
             }
         }
     }
@@ -1606,7 +1606,7 @@ async function pushBTCpmt(rawtx) {
         if(encodedAddressPrefix == 'main')
         {
             console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-            txid = await postData("https://bitexplorer.io/api/tx", rawtx);
+            txid = await postData("https://bitnft.io/api/tx", rawtx);
         }
     }
 
@@ -1701,7 +1701,7 @@ async function addressReceivedMoneyInThisTx(address) {
 
     try
     {
-        nonjson = await getData("https://bitexplorer.io/api/address/" + address + "/txs");
+        nonjson = await getData("https://bitexplorer.io/api/v1/address/" + address + "/txs");
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
         {
@@ -1738,7 +1738,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 
     try
     {
-        url = "https://bitexplorer.io/api/address/" + address;
+        url = "https://bitexplorer.io/api/v1/address/" + address;
         nonjson = await getData(url);
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
@@ -1768,7 +1768,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 }
 
 async function probeAddress(address) {
-    let url = "https://bitexplorer.io/api/address/" + address;
+    let url = "https://bitexplorer.io/api/v1/address/" + address;
     let nonjson = await getData(url);
     if (!isValidJson(nonjson)) return false;
     return true;
@@ -2106,9 +2106,13 @@ async function init(num) {
     }
     num = num + 1;
     let allrates = await getAllFeeRates();
-    $('.minfee .num').innerText = allrates["minimumFee"];
-    $('.midfee .num').innerText = allrates["hourFee"];
-    $('.maxfee .num').innerText = allrates["fastestFee"];
+//    $('.minfee .num').innerText = allrates["minimumFee"];
+//    $('.midfee .num').innerText = allrates["hourFee"];
+//    $('.maxfee .num').innerText = allrates["fastestFee"];
+
+    $('.minfee .num').innerText = 2;
+    $('.midfee .num').innerText = 2;
+    $('.maxfee .num').innerText = 2;
     let isgreen;
     $$('.fee .num').forEach(function (item) {
         if (item.style.backgroundColor == "green" || getComputedStyle(item).backgroundColor == "rgb(0, 128, 0)") isgreen = item;

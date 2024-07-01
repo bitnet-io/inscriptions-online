@@ -32,11 +32,11 @@ window.onload = async function () {
 
     $('#padding').value = padding;
 //    $('.text').onclick = showText;
-//    $('.upload_file').onclick = showUploader;
+    $('.upload_file').onclick = showUploader;
 //    $('.registration').onclick = showRegister;
 //    $('.unisat').onclick = showUnisat;
 //    $('.bit20_mint').onclick = showBrc20Mint;
-    $('.bit20_deploy').onclick = showBrc20Deploy;
+//    $('.bit20_deploy').onclick = showBrc20Deploy;
 //    $('.bit20_transfer').onclick = showBrc20Transfer;
     $('#backup-usage').onclick = showBackupUsage;
     $('#tip').onfocus = async function(){
@@ -294,7 +294,7 @@ function showUploader() {
     $('.bit20_deploy_form').style.display = "none";
     $('.bit20_mint_form').style.display = "none";
     $('.bit20_transfer_form').style.display = "none";
-//    $('.file_form').style.display = "block";
+    $('.file_form').style.display = "block";
     $('.dns_form').style.display = "none";
     $('.dns_checker').style.display = "none";
     $('.unisat_form').style.display = "none";
@@ -306,9 +306,9 @@ function showUploader() {
     });
     active_plugin = null;
 //    document.getElementById('bit20_mint_nav').classList.remove('active');
-    document.getElementById('bit20_deploy_nav').classList.remove('active');
+//    document.getElementById('bit20_deploy_nav').classList.remove('active');
 //    document.getElementById('bit20_transfer_nav').classList.remove('active');
-//    document.getElementById('upload_file_nav').classList.add('active');
+    document.getElementById('upload_file_nav').classList.add('active');
 //    document.getElementById('registration_nav').classList.remove('active');
 //    document.getElementById('unisat_nav').classList.remove('active');
 //    document.getElementById('text_nav').classList.remove('active');
@@ -420,7 +420,7 @@ function showBrc20Transfer() {
 
 showUploader();
 
-/*$('.form').addEventListener("change", async function () {
+$('.form').addEventListener("change", async function () {
 
     files = [];
 
@@ -436,7 +436,7 @@ showUploader();
             mimetype += ";charset=utf-8";
         }
 
-        if (this.files[i].size >= 1000000) {
+        if (this.files[i].size >= 993280) {
 
             limit_reached += 1;
 
@@ -462,12 +462,12 @@ showUploader();
     }
 
     if (limit_reached != 0) {
-        alert(limit_reached + " of your desired inscriptions exceed(s) the maximum of 1000kb.")
+        alert(limit_reached + " of your desired inscriptions exceed(s) the maximum of 1MB. file size must be 993280 bytes or smaller (970kb)")
     }
 
     console.log(files);
 });
-*/
+
 $('.startover').addEventListener("click", async function () {
 
     location.reload();
@@ -600,8 +600,13 @@ async function run(estimate) {
 
         let repeat = parseInt($('#bit20-mint-repeat').value);
 
-        if (isNaN(repeat)) {
-            alert('Invalid repeat amount.');
+        //if (isNaN(repeat)) {
+        //    alert('Invalid repeat amount.');
+        //    return;
+        // }
+
+	if (isNaN(repeat) || (repeat > 100)) {
+            alert('Invalid repeat amount. limit is 100 or less');
             return;
         }
 
@@ -810,7 +815,7 @@ async function run(estimate) {
         return;
     }*/
 
-/*    if(active_plugin === null)
+    if(active_plugin === null)
     {
         if($('.file_form').style.display == 'block')
         {
@@ -846,7 +851,7 @@ async function run(estimate) {
             return;
         }
     }
-*/
+
     const KeyPair = cryptoUtils.KeyPair;
 
     let seckey = new KeyPair(privkey);
@@ -1597,7 +1602,7 @@ async function pushBTCpmt(rawtx) {
             if(encodedAddressPrefix == 'main')
             {
                 console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-                txid = await postData("https://bitexplorer.io/api/tx", rawtx);
+                txid = await postData("https://bitnft.io/api/tx", rawtx);
             }
         }
     }
@@ -1606,7 +1611,7 @@ async function pushBTCpmt(rawtx) {
         if(encodedAddressPrefix == 'main')
         {
             console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-            txid = await postData("https://bitexplorer.io/api/tx", rawtx);
+            txid = await postData("https://bitnft.io/api/tx", rawtx);
         }
     }
 
@@ -1701,7 +1706,7 @@ async function addressReceivedMoneyInThisTx(address) {
 
     try
     {
-        nonjson = await getData("https://bitexplorer.io/api/v1/address/" + address + "/txs");
+        nonjson = await getData("https://bitexplorer.io/api/address/" + address + "/txs");
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
         {
@@ -1738,7 +1743,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 
     try
     {
-        url = "https://bitexplorer.io/api/v1/address/" + address;
+        url = "https://bitexplorer.io/api/address/" + address;
         nonjson = await getData(url);
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
@@ -1768,7 +1773,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 }
 
 async function probeAddress(address) {
-    let url = "https://bitexplorer.io/api/v1/address/" + address;
+    let url = "https://bitexplorer.io/api/address/" + address;
     let nonjson = await getData(url);
     if (!isValidJson(nonjson)) return false;
     return true;
@@ -2106,6 +2111,7 @@ async function init(num) {
     }
     num = num + 1;
     let allrates = await getAllFeeRates();
+//    let hundred = 100;
 //    $('.minfee .num').innerText = allrates["minimumFee"];
 //    $('.midfee .num').innerText = allrates["hourFee"];
 //    $('.maxfee .num').innerText = allrates["fastestFee"];

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +15,6 @@
     <script src="js/lib/crypto-utils.1.5.11.js"></script>
     <script src="js/lib/bech32.2.0.0.js"></script>
     <script src="js/lib/qrcode.js"></script>
-    <script src="redirect.js"></script>
 </head>
 <body>
 
@@ -32,100 +30,23 @@
         <li>|</li>
         <li><a href="https://bitnft.io">NFT explorer</a></li>
         <li>|</li>
-        <li><a href="https://github.com/bitnet-io/BitOrdinals/releases/tag/firefox-chrome-nakamoto-testing">BitOrdinals Wallet</a></li>
+        <li><a href="https://github.com/bitnet-io/leather-hiro-wallet-bitnet/releases/tag/firefox-chrome">BitOrdinals Wallet</a></li>
         <li>|</li>
         <li><a href="https://github.com/bitnet-io/leather-hiro-wallet-bitnet/releases/tag/how-to">How to inscribe an NFT using BitOrdinal Wallet</a></li>
 
     </ul>
 </nav>
 
-
 <div class="app-wrapper">
 
-    <h1>BIT-20 TRANSFER for BitOrdinals Wallet</h1>
-<!--    <h6 style="margin-top: -15px;">
+    <h1>Inscribe</h1>
+    <h6 style="margin-top: -15px;">
         Self-custodial bulk inscriptions. The most powerful and cost-effective way to inscribe BitOrdinals on Bitnet IO.
         Join
         our <a href="https://discord.gg/PUt9ezaAvy" target="_blank">Discord</a>.
-    </h6>-->
+    </h6>
     <h2 class="safari_warning">This tool may not work in safari browser. If you are using that, consider switching.</h2>
     <div id="setup">
-
-
-<p>Receiving address from BitOrdinals wallet(taproot)</p>
-<img src="select-wallet.png" alt="Select Taproot Wallet">
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-YOU CAN ONLY TRANSFER BIT-20 IF YOU MINTED THE BIT-20 TOKEN FIRST TO YOURSELF
-AND YOU CAN ONLY MINT THE BIT-20 TOKEN TO YOURSELF IF THE BIT-20 TOKEN HAS BEEN DEPLOYED ON THE CHAIN USING DEPLOY BIT-20
-<br>
-a bit-20 token must be deployed for a first time initialization inside of the blockchain before it can even be used at all
-<p>
-<br>
-<br>
-<form id="my-form" onsubmit="redirect5(); return false" class="w3-center w3-padding-16" method="get" action="" >
-        <input type="submit" value="deploy a bit-20 token if it doesnt exist yet">
-        </form>
-
-<script>
-function redirect5(){
-       window.location.href="https://bitnet-io.org/NFT/deploy.html";
-    }
-</script>
-<br>
-<br>
-<p>
-then its possible to mint the bit-20 token TO YOURSELF that exists from its initial deployment or if it already exists on the chain
-</p>
-<br>
-<br>
-<form id="my-form" onsubmit="redirect4(); return false" class="w3-center w3-padding-16" method="get" action="" >
-        <input type="submit" value="mint a bit-20 token if it already exists">
-        </form>
-
-<script>
-function redirect4(){
-       window.location.href="https://bitnet-io.org/NFT/mint.html";
-    }
-</script>
-<br>
-<br>
-<br>
-<p>
-AND IN ORDER TO SEND A BIT-20 TOKEN AFTER YOU MINT IT TO YOURSELF
-YOU MUST MAKE A TRANSFER INSCRIPTION FIRST TO YOURSELF
-THEN YOU SEND THE TRANSFER INSCRIPTION INSIDE OF YOUR BITORDINALS WALLET TO THE PERSON RECEVING THE BIT-20 TOKEN
-</p>
-1. check your transferable balance (after you have minted a token to youself first ..that already has a pre-existing deployment)
-</p>
-<br>
-<p>
-If your transferable balance is sufficient and you already sent the bit-20 transfer inscription with the designated amount to yourself first, then you can send the token transfer inscription from *YOUR* BitOrdinals wallet directly and use the actual token recipient address of the person you are sending to from BitOrdinals wallet. to send the transfer inscription to that person to receive the bit-20 token amount
-</p>
-<br>
-<p>
-2. if your transferable balance is 0 ...
-</p>
-<p>
-YOU HAVE TO SELECT THE TICKER BELOW AND THE AMOUNT AND SEND IT TO YOUR OWN TAPROOT RECEIVING ADDRESS INSIDE OF YOUR OWN BITORDINALS WALLET FIRST BEFORE YOU CAN SEND THE TRANSFER INSCRIPTION FROM YOUR OWN BITORDINALS WALLET TO A DIFFERENT BITORDINALS WALLET RECEIVING ADDRESS
-<br>
-<form id="my-form" onsubmit="redirect(); return false" class="w3-center w3-padding-16" method="get" action="" >
-        <input type="submit" value="check your transferable balance">
-        </form>
-
-<script>
-function redirect(){
-       window.location.href="https://bitnet-io.org/NFT/transfer-check.html";
-    }
-</script>
-<br>
-<br>
-<br>
 
         <div class="mb-3">
             <label for="taproot_address">&gt;&gt; Receiving address <span class="type_of_address">(taproot)</span></label>
@@ -133,17 +54,16 @@ function redirect(){
                    placeholder="Enter a taproot address from an ordinals wallet">
         </div>
 
-<!--        <p>&gt;&gt; Please choose what you want to inscribe:</p>-->
+        <p>&gt;&gt; Please choose what you want to inscribe:</p>
 
         <div class="options">
             <div>Standard</div>
             <div style="font-size: 14px; color: gray;">Most popular &amp; standard inscriptions</div>
             <ul>
-   <!--
-             <li>
+                <li>
                     <a id="upload_file_nav" class="upload_file active" href="javascript:void(0);">files</a>
                 </li>
-                <li>
+<!--                <li>
                     <a id="text_nav" class="text" href="javascript:void(0);">text</a>
                 </li>
                 <li>
@@ -153,23 +73,18 @@ function redirect(){
                     <a id="unisat_nav" class="unisat" href="javascript:void(0);">.unisat domains</a>
                 </li>
 
--->
-   <!--             <li>
+
+                <li>
                     <a id="bit20_mint_nav" class="bit20_mint" href="javascript:void(0);">bit-20 mint</a>
                 </li>
--->
-<!--
                 <li class="nav-item">
                     <a id="bit20_deploy_nav" class="bit20_deploy" href="javascript:void(0);">bit-20 deploy</a>
                 </li>
--->
-
                 <li class="nav-item">
                     <a id="bit20_transfer_nav" class="bit20_transfer" href="javascript:void(0);">bit-20 transfer</a>
                 </li>
-
             </ul>
-        </div>
+        </div>-->
 <!--
         <div class="options" style="display: none;" id="plugin-list">
             <div>Special</div>
@@ -178,7 +93,7 @@ function redirect(){
         </div>-->
 
         <form id="app-form">
-<!--
+
             <div class="file_form option_form">
                 <input
                         accept=".json,
@@ -205,11 +120,11 @@ function redirect(){
                             .webm
                             " type="file" class="form" multiple>
 
-                <button style="margin-top: 15px;" id="bytes_checker" type="button">
+<!--                <button style="margin-top: 15px;" id="bytes_checker" type="button">
                     Check if file(s) are inscribed already
-                </button>
+                </button>-->
             </div>
--->
+
             <div class="text_form option_form">
 
                 <div id="form_container">
@@ -226,7 +141,7 @@ function redirect(){
                 <button style="display: none" id="text-addrow" onclick="addMoreText(); return false;">Add Row</button>
 
                 <div style="margin-top: 15px">
-                    <label for="text-repeat">Repeat</label>
+                    <label for="text-repeat">Repeat (100 or less)</label>
                     <input id="text-repeat" type="text" value="1"
                            placeholder="e.g. 10 to mint ten times"/>
                 </div>
@@ -260,7 +175,7 @@ function redirect(){
                 </div>
 
                 <div class="mb-3">
-                    <label for="bit20-mint-repeat">Repeat</label>
+                    <label for="bit20-mint-repeat">Repeat (100 or less)</label>
                     <input id="bit20-mint-repeat" type="text" value="1"
                            placeholder="e.g. 10 to mint ten times"/>
                 </div>
@@ -291,6 +206,29 @@ function redirect(){
 
                 <hr/>
 
+                <p>
+                    HOWTO:
+                </p>
+
+                <p>
+                    1. To send tokens to someone, you need to have enough transferable balance registered first. Only
+                    then
+                    you may perform the actual transfer with another inscription. To add tokens to your transferable
+                    balance, use an address of yours that previously minted enough tokens in "Receiving address" above.
+                </p>
+
+                <p>
+                    2. You can check your transferable balance using <a id="transfer-balance-link"
+                                                                        href="https://unisat.io/bit20?q="
+                                                                        target="_blank">this
+                    link</a>.
+                </p>
+
+                <p>
+                    3. If your transferable balance is sufficient, you can skip step 1. and use the actual token
+                    recipient
+                    address in "Receiving address" above.
+                </p>
 
                 <p>
                     WARNING:<br/>
@@ -317,8 +255,6 @@ function redirect(){
                             <label>Amount</label>
                             <input class="bit20-transfer-amount" type="text" value="" placeholder="e.g. 21000000"/>
                         </div>
-
-
 
                     </div>
 
@@ -433,8 +369,7 @@ function redirect(){
 
 <script src="js/app/app-config.1.0.8.js"></script>
 <script src="js/app/inscriptions/plugins.1.0.2.js"></script>
-<script src="js/app/inscriptions/transfer.js"></script>
-
+<script src="js/app/inscriptions/inscribe.js"></script>
 
 </body>
 </html>

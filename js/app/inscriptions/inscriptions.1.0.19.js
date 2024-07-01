@@ -21,7 +21,7 @@ let slider = document.getElementById("radiowaves_range");
 let output = document.getElementById("radiowaves_per_byte");
 output.innerHTML = slider.value;
 slider.oninput = function () {
-    output.innerHTML = this.value;
+    output.innerHTML = this.value; 
     sessionStorage["feerate"] = this.value;
     $$('.fee .num').forEach(function (item) {
         item.style.backgroundColor = "grey";
@@ -158,7 +158,7 @@ async function startInscriptionRecovery(key) {
             continue;
         }
 
-        let response = await getData('https://bitnft.io/api/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
+        let response = await getData('https://bitexplorer.io/api/v1/address/' + Address.p2tr.encode(plainTapKey, encodedAddressPrefix) + '/utxo');
         let utxos = JSON.parse(response);
         let utxo = null;
 
@@ -436,7 +436,7 @@ $('.form').addEventListener("change", async function () {
             mimetype += ";charset=utf-8";
         }
 
-        if (this.files[i].size >= 1000000) {
+        if (this.files[i].size >= 993281) {
 
             limit_reached += 1;
 
@@ -462,7 +462,7 @@ $('.form').addEventListener("change", async function () {
     }
 
     if (limit_reached != 0) {
-        alert(limit_reached + " of your desired inscriptions exceed(s) the maximum of 1000kb.")
+        alert(limit_reached + " of your desired inscriptions exceed(s) the maximum of 1MB. file size must be 993280 bytes or smaller (970kb)")
     }
 
     console.log(files);
@@ -600,10 +600,16 @@ async function run(estimate) {
 
         let repeat = parseInt($('#bit20-mint-repeat').value);
 
-        if (isNaN(repeat)) {
-            alert('Invalid repeat amount.');
+       // if (isNaN(repeat)) {
+       //     alert('Invalid repeat amount.');
+       //     return;
+       // }
+	
+        if (isNaN(repeat) || (repeat > 100)) {
+            alert('Invalid repeat amount. limit is 100 or less');
             return;
         }
+
 
         for (let i = 0; i < repeat; i++) {
             let mimetype = "text/plain;charset=utf-8";
@@ -1021,9 +1027,34 @@ let html = `<p>Please send the EXACT amount!!! not more and not less! send this 
 
 
     $('.display').innerHTML = html;
+//    var num = Math.floor(Math.random() * 90000) + 109090;
 
-    let qr_value = "bitnet:" + fundingAddress + "?amount=" + radiowavesToBitcoin(total_fees);
-    console.log("qr:", qr_value);
+//qr-motion here
+
+//function generateQr() { 
+//    var num = Math.floor(Math.random() * 90000) + 109090;
+//    let qr_value = "" + fundingAddress + num;
+//    $('.display').append(createQR(qr_value));
+//    setTimeout(generateQr, 600);
+//}
+
+//generateQr();
+
+function generateQr2() { 
+    let qr_value2 = "" + fundingAddress;
+    $('.display').append(createQR(qr_value2));
+    setTimeout(generateQr2, 200);
+
+}
+generateQr2();
+
+
+//function generateQr2() { 
+//    let qr_value = "" + fundingAddress;
+//    $('.display').append(createQR(qr_value));
+//    setTimeout(generateQr2, 300);
+//}
+//generateQr2();
 
     let overhead = total_fees - total_fee - (padding * inscriptions.length) - tip;
 
@@ -1037,7 +1068,10 @@ let html = `<p>Please send the EXACT amount!!! not more and not less! send this 
         tip = 0;
     }
 
-    $('.display').append(createQR(qr_value));
+    let qr_value = "" + fundingAddress;
+    console.log("qr:", qr_value);
+
+
     $('.display').innerHTML += `<p class="checking_mempool">Checking the mempool<span class="dots">.</span></p>`;
     $('.display').innerHTML += '<p>' + (padding * inscriptions.length) + ` radiowaves will go to the address.</p><p>${total_fee} radiowaves will go to miners as a mining fee.</p><p>${overhead} radiowaves overhead will be used as boost.</p><p>${tip} radiowaves for developer tipping.</p>`;
     $('.display').style.display = "block";
@@ -1191,7 +1225,7 @@ let html = `<p>Please send the EXACT amount!!! not more and not less! send this 
         } catch (e) {
 
             let html = `<p style="background-color: white; color: black;">Inscription #${vout} transaction:</p><p style="word-wrap: break-word;"><a href="https://bitexplorer.io/${mempoolNetwork}tx/${_txid2}" target="_blank">https://bitexplorer.io/${mempoolNetwork}tx/${_txid2}</a></p>`;
-            html += `<p style="background-color: white; color: black;">Bitordinals explorer (after tx confirmation):</p><p style="word-wrap: break-word;"><a href="https://bitordinals.io/inscription/${_txid2}i0" target="_blank">https://bitordinals.io/inscription/${_txid2}i0</a></p>`;
+            html += `<p style="background-color: white; color: black;">Bitnft explorer (after 2 tx confirmations go by your NFT will be visible):</p><p style="word-wrap: break-word;"><a href="https://bitnft.io/inscription/${_txid2}i0" target="_blank">https://bitnft.io/inscription/${_txid2}i0</a></p>`;
             html += '<hr/>';
             $('.modal-content').innerHTML += html;
         }
@@ -1590,14 +1624,14 @@ async function pushBTCpmt(rawtx) {
 
     try
     {
-        txid = await postData("https://bitexplorer.io/api/tx", rawtx);
+        txid = await postData("https://bitnft.io/api/tx", rawtx);
 
         if( ( txid.toLowerCase().includes('rpc error') || txid.toLowerCase().includes('too many requests') || txid.toLowerCase().includes('bad request') ) && !txid.includes('descendant'))
         {
             if(encodedAddressPrefix == 'main')
             {
                 console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-                txid = await postData("https://bitexplorer.io/api/tx", rawtx);
+                txid = await postData("https://bitnft.io/api/tx", rawtx);
             }
         }
     }
@@ -1606,7 +1640,7 @@ async function pushBTCpmt(rawtx) {
         if(encodedAddressPrefix == 'main')
         {
             console.log('USING BLOCKSTREAM FOR PUSHING INSTEAD');
-            txid = await postData("https://bitexplorer.io/api/tx", rawtx);
+            txid = await postData("https://bitnft.io/api/tx", rawtx);
         }
     }
 
@@ -1701,13 +1735,13 @@ async function addressReceivedMoneyInThisTx(address) {
 
     try
     {
-        nonjson = await getData("https://bitexplorer.io/api/address/" + address + "/txs");
+        nonjson = await getData("https://bitexplorer.io/api/v1/address/" + address + "/txs");
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
         {
             if(encodedAddressPrefix == 'main')
             {
-                nonjson = await getData("https://blockstream.info/api/address/" + address + "/txs");
+                nonjson = await getData("https://blockstream.info/api/v1/address/" + address + "/txs");
             }
         }
     }
@@ -1738,7 +1772,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 
     try
     {
-        url = "https://bitexplorer.io/api/address/" + address;
+        url = "https://bitexplorer.io/api/v1/address/" + address;
         nonjson = await getData(url);
 
         if(nonjson.toLowerCase().includes('rpc error') || nonjson.toLowerCase().includes('too many requests') || nonjson.toLowerCase().includes('bad request'))
@@ -1768,7 +1802,7 @@ async function addressOnceHadMoney(address, includeMempool) {
 }
 
 async function probeAddress(address) {
-    let url = "https://bitexplorer.io/api/address/" + address;
+    let url = "https://bitexplorer.io/api/v1/address/" + address;
     let nonjson = await getData(url);
     if (!isValidJson(nonjson)) return false;
     return true;
@@ -1826,6 +1860,7 @@ function modalVanish() {
 }
 
 $$('.fee').forEach(function (item) {
+    let num1 = 1
     item.onclick = function () {
         $$('.fee .num').forEach(function (item2) {
             item2.style.backgroundColor = "grey";
@@ -2105,9 +2140,12 @@ async function init(num) {
     }
     num = num + 1;
     let allrates = await getAllFeeRates();
-    $('.minfee .num').innerText = allrates["minimumFee"];
-    $('.midfee .num').innerText = allrates["hourFee"];
-    $('.maxfee .num').innerText = allrates["fastestFee"];
+//    $('.minfee .num').innerText = allrates["minimumFee"];
+//    $('.midfee .num').innerText = allrates["hourFee"];
+//    $('.maxfee .num').innerText = allrates["fastestFee"];
+    $('.minfee .num').innerText = 2;
+    $('.midfee .num').innerText = 2;
+    $('.maxfee .num').innerText = 2;
     let isgreen;
     $$('.fee .num').forEach(function (item) {
         if (item.style.backgroundColor == "green" || getComputedStyle(item).backgroundColor == "rgb(0, 128, 0)") isgreen = item;
@@ -2177,6 +2215,10 @@ function createQR(content) {
     dataUriPngImage.id = "qr_code";
     return dataUriPngImage;
 }
+
+
+
+
 
 async function getBitcoinPriceFromCoinbase() {
     let data = await getData("https://api.coinbase.com/v2/prices/BTC-USD/spot");
